@@ -19,4 +19,38 @@ public class Quadro {
 	@ManyToOne
 	private Autore autore;
 	
+	public Long getId() {
+		return id;
+	}
+	public String getTitolo() {
+		return titolo;
+	}
+	public String getAnno() {
+		return anno;
+	}
+	public String getTecnica() {
+		return tecnica;
+	}
+	public String getDimensioni() {
+		return dimensioni;
+	}
+	public Autore getAutore() {
+		return autore;
+	}
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
+	}
+	public void setAnno(String anno) {
+		this.anno = anno;
+	}
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
+	}
+	public void setDimensioni(String dimensioni) {
+		this.dimensioni = dimensioni;
+	}
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
+	
 }
