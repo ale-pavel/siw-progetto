@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Autore {
@@ -19,7 +21,9 @@ public class Autore {
 	private String nome;
 	private String cognome;
 	private String nazionalita;
+	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
+	@Temporal(TemporalType.DATE)
 	private Date dataMorte;
 	@OneToMany(mappedBy="autore")
 	private List<Quadro> quadri;
