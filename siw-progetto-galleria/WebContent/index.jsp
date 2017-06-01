@@ -36,7 +36,7 @@
 
       <div class="jumbotron">
         <h1>Benvenuto in Galleria</h1>
-        <p> Benvenuto nella galleria di opere d'arte</p>
+        <p> Benvenuto nella galleria di opere d'arte.</p>
 
       </div>
 
