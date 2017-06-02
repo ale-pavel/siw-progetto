@@ -47,6 +47,18 @@ public class QuadroController{
 		return dimensioni;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public Autore getAutore() {
+		return autore;
+	}
+
+	public QuadroService getQuadroService() {
+		return quadroService;
+	}
+
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
@@ -61,18 +73,6 @@ public class QuadroController{
 
 	public void setDimensioni(String dimensioni) {
 		this.dimensioni = dimensioni;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Autore getAutore() {
-		return autore;
-	}
-
-	public QuadroService getQuadroService() {
-		return quadroService;
 	}
 
 	public void setAutore(Autore autore) {
