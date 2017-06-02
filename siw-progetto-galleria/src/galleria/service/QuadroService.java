@@ -11,13 +11,14 @@ public class QuadroService {
 	
 	@PersistenceContext(unitName = "siw-progetto-galleria")
     private EntityManager em;
-
-	public void inserisciQuadro(Quadro q) {
-		
+	
+	public Quadro inserisciQuadro(Quadro q) {
+		em.persist(q);
+		return q;
 	}
 	
 	public void rimuoviQuadro(Long id) {
 		
 	}
-	
+
 }

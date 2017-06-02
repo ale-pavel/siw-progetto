@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Quadro {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -18,6 +18,8 @@ public class Quadro {
 	private String dimensioni;
 	@ManyToOne
 	private Autore autore;
+	
+	public Quadro() {}
 	
 	public Long getId() {
 		return id;
@@ -36,6 +38,9 @@ public class Quadro {
 	}
 	public Autore getAutore() {
 		return autore;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
