@@ -24,7 +24,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Quadri</a></li>
+              <li><a href="faces/inserimentoQuadro.jsp">Inserimento Quadro</a></li>
               <li><a href="#">Contact</a></li>
               
             </ul>
