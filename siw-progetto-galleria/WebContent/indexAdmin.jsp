@@ -26,7 +26,7 @@
 					<li class="active"><a href="faces/indexAdmin.jsp">Home</a></li>
 					<li><a href="faces/inserimentoQuadro.jsp">Inserimento
 							Quadro</a></li>
-					<li><a href="#">Inserimento Autore</a></li>
+					<li><a href="faces/inserimentoAutore.jsp">Inserimento Autore</a></li>
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

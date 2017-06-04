@@ -12,8 +12,9 @@ public class AutoreService {
 	@PersistenceContext(unitName = "siw-progetto-galleria")
     private EntityManager em;
 
-	public void inserisciAutore(Autore a) {
-		
+	public Autore inserisciAutore(Autore a) {
+		em.persist(a);
+		return a;
 	}
 	
 	public void rimuoviAutore(Long id) {

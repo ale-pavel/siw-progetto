@@ -12,10 +12,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Inserisci Quadro</title>
+<title>Inserisci Autore</title>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 		<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -25,9 +25,9 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="faces/indexAdmin.jsp">Home</a></li>
-					<li class="active"><a href="faces/inserimentoQuadro.jsp">Inserimento
+					<li><a href="faces/inserimentoQuadro.jsp">Inserimento
 							Quadro</a></li>
-					<li><a href="faces/inserimentoAutore.jsp">Inserimento Autore</a></li>
+					<li class="active"><a href="faces/inserimentoAutore.jsp">Inserimento Autore</a></li>
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -39,24 +39,28 @@
 		<f:view>
 			<h:form>
 				<div>
-					Titolo:
-					<h:inputText value="#{quadroController.titolo}" />
+					Nome:
+					<h:inputText value="#{autoreController.nome}" />
 				</div>
 				<div>
-					Anno:
-					<h:inputText value="#{quadroController.anno}" />
+					Cognome:
+					<h:inputText value="#{autoreController.cognome}" />
 				</div>
 				<div>
-					Dimensioni:
-					<h:inputText value="#{quadroController.dimensioni}" />
+					Nazionalita:
+					<h:inputText value="#{autoreController.nazionalita}" />
 				</div>
 				<div>
-					Tecnica:
-					<h:inputText value="#{quadroController.tecnica}" />
+					Data di nascita:
+					<h:inputText value="#{autoreController.dataNascita}" />
+				</div>
+				<div>
+					Data di morte:
+					<h:inputText value="#{autoreController.dataMorte}" />
 				</div>
 				<div>
 					<h:commandButton value="Submit"
-						action="#{quadroController.inserisciQuadro}" />
+						action="#{autoreController.inserisciAutore}" />
 				</div>
 			</h:form>
 		</f:view>
