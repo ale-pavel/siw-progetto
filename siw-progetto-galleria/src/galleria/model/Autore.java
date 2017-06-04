@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Autore {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private String cognome;
@@ -25,10 +25,11 @@ public class Autore {
 	private Date dataNascita;
 	@Temporal(TemporalType.DATE)
 	private Date dataMorte;
-	//@OneToMany(mappedBy="autore")
-	//private List<Quadro> quadri;
+	@OneToMany(mappedBy="autore")
+	private List<Quadro> quadri;
 	
 	public Autore() {
+		
 		//this.quadri = new LinkedList<>();
 	}
 	
@@ -50,9 +51,9 @@ public class Autore {
 	public Date getDataMorte() {
 		return dataMorte;
 	}
-	/*public List<Quadro> getQuadri() {
+	public List<Quadro> getQuadri() {
 		return quadri;
-	}*/
+	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -68,8 +69,8 @@ public class Autore {
 	public void setDataMorte(Date dataMorte) {
 		this.dataMorte = dataMorte;
 	}
-	/*public void setQuadri(List<Quadro> quadri) {
+	public void setQuadri(List<Quadro> quadri) {
 		this.quadri = quadri;
-	}*/
+	}
 	
 }
