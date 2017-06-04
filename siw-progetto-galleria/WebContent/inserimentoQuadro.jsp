@@ -27,11 +27,11 @@
 					<li><a href="faces/indexAdmin.jsp">Home</a></li>
 					<li class="active"><a href="faces/inserimentoQuadro.jsp">Inserimento
 							Quadro</a></li>
-					<li><a href="#">Inserimento Autore</a></li>
+					<li><a href="faces/inserimentoAutore.jsp">Inserimento Autore</a></li>
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="faces/inserimentoQuadro.jsp">Profilo</a></li>
+					<li><a href="#">Profilo</a></li>
 				</ul>
 			</div>
 		</div>
@@ -40,19 +40,19 @@
 			<h:form>
 				<div>
 					Titolo:
-					<h:inputText value="#{quadroController.titolo}" />
+					<h:inputText value="#{quadroController.titolo}" required="true"/>
 				</div>
 				<div>
 					Anno:
-					<h:inputText value="#{quadroController.anno}" />
+					<h:inputText value="#{quadroController.anno}" required="true"/>
 				</div>
 				<div>
 					Dimensioni:
-					<h:inputText value="#{quadroController.dimensioni}" />
+					<h:inputText value="#{quadroController.dimensioni}" required="true"/>
 				</div>
 				<div>
 					Tecnica:
-					<h:inputText value="#{quadroController.tecnica}" />
+					<h:inputText value="#{quadroController.tecnica}" required="true"/>
 				</div>
 				<div>
 					<h:commandButton value="Submit"
