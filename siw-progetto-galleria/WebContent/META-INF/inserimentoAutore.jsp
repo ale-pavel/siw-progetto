@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-<!-- Static navbar -->
+<!-- Static navbar
 <nav id="navMenu" class="navbar navbar-default">
 <script src="navBar.js"></script>
 </nav>
@@ -39,7 +39,7 @@
 			<h:commandButton value="Submit" action="#{autoreController.inserisciAutore}" />
 		</div>
 	</h:form>
-</f:view>
+</f:view> -->
 </div>
 </body>
 </html>

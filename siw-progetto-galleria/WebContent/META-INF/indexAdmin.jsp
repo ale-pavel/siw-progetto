@@ -7,18 +7,18 @@
 <link rel="stylesheet" href="bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Sezione Amministratore</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
-	<!-- Static navbar -->
-	<nav id="navMenu" class="navbar navbar-default">
-	<script src="navBar.js"></script>
-	</nav>
+		<!-- Static navbar
+		<nav id="navMenu" class="navbar navbar-default">
+		<script src="navBar.js"></script>
+		</nav> -->
 		<div class="col-sm-4">
 			<ul class="list-group">
-				<li class="list-group-item"><a href="inserimentoQuadro.jsf">Inserimento nuovo quadro</a></li>
-				<li class="list-group-item"><a href="inserimentoAutore.jsf">Inserimento nuovo autore</a></li>
+				<li class="list-group-item"><a href="/faces/inserimentoQuadro.jsp">Inserimento nuovo quadro</a></li>
+				<li class="list-group-item"><a href="#">Inserimento nuovo autore</a></li>
 				da cambiare
 			</ul>
 		</div>

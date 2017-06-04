@@ -9,7 +9,7 @@
 </head>
 <body>
 <f:view>
-	Nome:${autoreController.nome}
+	Nome:${autoreController.titolo}
 	Cognome:${autoreController.cognome}
 	Nazionalita:${autoreController.nazionalita}
 	Data di nascita:${autoreController.dataNascita}
