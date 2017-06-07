@@ -3,6 +3,7 @@ package galleria.servlet;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+import galleria.model.Quadro;
 import galleria.service.QuadroService;
 
 @ManagedBean(name="quadroController")
@@ -14,10 +15,11 @@ public class QuadroController{
 	private Long idAutore;	
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
+	private Quadro quadroInserito;
 	
 	public String inserisciQuadro() {
-		quadroService.inserisciQuadro(titolo,anno,tecnica,dimensioni,idAutore);
-		return "quadro";
+		quadroInserito = quadroService.inserisciQuadro(titolo,anno,tecnica,dimensioni,idAutore);
+		return "quadro.jsf";
 	}
 	
 	public String getTitolo() {
@@ -66,6 +68,14 @@ public class QuadroController{
 
 	public void setQuadroService(QuadroService quadroService) {
 		this.quadroService = quadroService;
+	}
+
+	public Quadro getQuadroInserito() {
+		return quadroInserito;
+	}
+
+	public void setQuadroInserito(Quadro quadroInserito) {
+		this.quadroInserito = quadroInserito;
 	}
 	
 }

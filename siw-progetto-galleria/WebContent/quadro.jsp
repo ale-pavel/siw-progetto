@@ -17,10 +17,11 @@
 		<!-- Static navbar -->
 		<nav id="navMenu" class="navbar navbar-default"><script src="navBar.js"></script></nav>
 		<f:view>
-	Titolo:${quadroController.titolo}
-	Anno:${quadroController.anno}
-	Dimensioni:${quadroController.dimensioni}
-	Tecnica:${quadroController.tecnica}
+	Titolo:${quadroController.quadroInserito.titolo}
+	Anno:${quadroController.quadroInserito.anno}
+	Dimensioni:${quadroController.quadroInserito.dimensioni}
+	Tecnica:${quadroController.quadroInserito.tecnica}
+	Autore:${quadroController.quadroInserito.autore.nome} ${quadroController.quadroInserito.autore.cognome}
 </f:view>
 	</div>
 </body>

@@ -21,7 +21,7 @@ public class AutoreController {
 	
 	public String inserisciAutore() {
 		autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
-		return "autore";
+		return "autore.jsf";
 	}
 	
 	public List<Autore> listaAutori() {
