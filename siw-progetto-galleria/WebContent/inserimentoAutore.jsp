@@ -20,24 +20,12 @@
 </nav>
 <f:view>
 	<h:form>
-		<div>
-			Nome: <h:inputText value="#{autoreController.nome}" />
-		</div>
-		<div>
-			Cognome: <h:inputText value="#{autoreController.cognome}" />
-		</div>
-		<div>
-			Nazionalita: <h:inputText value="#{autoreController.nazionalita}" />
-		</div>
-		<div>
-			Data di nascita: <h:inputText value="#{autoreController.dataNascita}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
-		</div>
-		<div>
-			Data di morte: <h:inputText value="#{autoreController.dataMorte}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
-		</div>
-		<div>
-			<h:commandButton value="Submit" action="#{autoreController.inserisciAutore}" />
-		</div>
+		<div>Nome: <h:inputText value="#{autoreController.nome}" /></div>
+		<div>Cognome: <h:inputText value="#{autoreController.cognome}" /></div>
+		<div>Nazionalita: <h:inputText value="#{autoreController.nazionalita}" /></div>
+		<div>Data di nascita: <h:inputText value="#{autoreController.dataNascita}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
+		<div>Data di morte: <h:inputText value="#{autoreController.dataMorte}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
+		<div><h:commandButton value="Submit" action="#{autoreController.inserisciAutore}" /></div>
 	</h:form>
 </f:view>
 </div>
