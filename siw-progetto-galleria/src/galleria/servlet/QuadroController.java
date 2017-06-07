@@ -3,31 +3,20 @@ package galleria.servlet;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
-import galleria.model.Autore;
-import galleria.model.Quadro;
 import galleria.service.QuadroService;
 
 @ManagedBean(name="quadroController")
 public class QuadroController{
-	
-	private Long id;
 	private String titolo;
-	private String anno;
+	private Integer anno;
 	private String tecnica;
 	private String dimensioni;
-	private Autore autore;	
-	private Quadro quadroCorrente;
+	private Long idAutore;	
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
 	
 	public String inserisciQuadro() {
-		Quadro q = new Quadro();
-		q.setTitolo(titolo);
-		q.setAnno(anno);
-		q.setTecnica(tecnica);
-		q.setDimensioni(dimensioni);
-		//q.setAutore(autore);
-		quadroCorrente = quadroService.inserisciQuadro(q);
+		quadroService.inserisciQuadro(titolo,anno,tecnica,dimensioni,idAutore);
 		return "quadro";
 	}
 	
@@ -35,7 +24,7 @@ public class QuadroController{
 		return titolo;
 	}
 
-	public String getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
 
@@ -47,14 +36,6 @@ public class QuadroController{
 		return dimensioni;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public Autore getAutore() {
-		return autore;
-	}
-
 	public QuadroService getQuadroService() {
 		return quadroService;
 	}
@@ -63,7 +44,7 @@ public class QuadroController{
 		this.titolo = titolo;
 	}
 
-	public void setAnno(String anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 
@@ -75,8 +56,12 @@ public class QuadroController{
 		this.dimensioni = dimensioni;
 	}
 
-	public void setAutore(Autore autore) {
-		this.autore = autore;
+	public Long getIdAutore() {
+		return idAutore;
+	}
+
+	public void setIdAutore(Long idAutore) {
+		this.idAutore = idAutore;
 	}
 
 	public void setQuadroService(QuadroService quadroService) {

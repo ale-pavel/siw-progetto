@@ -1,6 +1,8 @@
 package galleria.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,10 +15,10 @@ public class Quadro {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String titolo;
-	private String anno;
+	private Integer anno;
 	private String tecnica;
 	private String dimensioni;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Autore autore;
 	
 	public Quadro() {}
@@ -27,7 +29,7 @@ public class Quadro {
 	public String getTitolo() {
 		return titolo;
 	}
-	public String getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
 	public String getTecnica() {
@@ -45,7 +47,7 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public void setAnno(String anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 	public void setTecnica(String tecnica) {
