@@ -1,7 +1,13 @@
 package galleria.servlet;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.http.Part;
 
 import galleria.model.Quadro;
 import galleria.service.QuadroService;
@@ -12,16 +18,61 @@ public class QuadroController{
 	private Integer anno;
 	private String tecnica;
 	private String dimensioni;
-	private Long idAutore;	
+	//Id dell'autore scelto tra quelli esistenti nella checklist, di default è vuoto nel form
+	private Long idAutore;
+	//"File" (di tipo Part) ottenuto dal form inserimentoQuadro.jsf mediante h:inputFile
+	private Part imgFile;
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
-	private Quadro quadroInserito;
-	
+	//Utilizzato per mostrare il quadro desiderato (mediante visualizzaQuadroCorrente) sulla pagina quadro.jsf, e dopo l'inserimento nel db in automatico
+	private Quadro quadroCorrente;
+
 	public String inserisciQuadro() {
-		quadroInserito = quadroService.inserisciQuadro(titolo,anno,tecnica,dimensioni,idAutore);
+		Quadro q = new Quadro();
+		q.setTitolo(titolo);
+		q.setAnno(anno);
+		q.setTecnica(tecnica);
+		q.setDimensioni(dimensioni);
+		//Conversione di imgFile da Part a byte[] per l'inserimento nel db (Postgres)
+		//byte[] img = new byte[(int)imgFile.getSize()];
+		try {
+			InputStream is = imgFile.getInputStream();
+			byte[] buffer = new byte[(int)imgFile.getSize()];
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			for (int length=0;(length=is.read(buffer))>0;) 
+				output.write(buffer,0,length);
+			q.setImgFile(output.toByteArray());
+		} catch (IOException | NullPointerException e) {
+			return "inserimentoQuadro.jsf";
+		}	
+		//Try - catch da sistemare in modo ottimale, comunque funzionante
+		quadroCorrente = quadroService.inserisciQuadro(q, idAutore);
 		return "quadro.jsf";
 	}
-	
+
+	public String rimuoviQuadro(Long id) {
+		quadroService.rimuoviQuadro(id);
+		return "listaQuadri.jsf";
+	}
+
+	public String visualizzaQuadroCorrente(Long id) {
+		quadroCorrente = quadroService.ottieniQuadro(id);
+		return "quadro.jsf";
+	}
+
+
+	public List<Quadro> listaQuadri() {
+		return quadroService.listaQuadri();
+	}
+
+	public Part getImgFile() {
+		return imgFile;
+	}
+
+	public void setImgFile(Part imgFile) {
+		this.imgFile = imgFile;
+	}
+
 	public String getTitolo() {
 		return titolo;
 	}
@@ -70,12 +121,12 @@ public class QuadroController{
 		this.quadroService = quadroService;
 	}
 
-	public Quadro getQuadroInserito() {
-		return quadroInserito;
+	public Quadro getQuadroCorrente() {
+		return quadroCorrente;
 	}
 
-	public void setQuadroInserito(Quadro quadroInserito) {
-		this.quadroInserito = quadroInserito;
+	public void setQuadroCorrente(Quadro quadroCorrente) {
+		this.quadroCorrente = quadroCorrente;
 	}
-	
+
 }

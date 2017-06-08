@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Inserisci Autore</title>
+<title>Inserimento Autore</title>
 </head>
 <body>
 <div class="container">
@@ -20,8 +20,8 @@
 </nav>
 <f:view>
 	<h:form>
-		<div>Nome: <h:inputText value="#{autoreController.nome}" /></div>
-		<div>Cognome: <h:inputText value="#{autoreController.cognome}" /></div>
+		<div>Nome: <h:inputText value="#{autoreController.nome}" required="true" /></div>
+		<div>Cognome: <h:inputText value="#{autoreController.cognome}" required="true" /></div>
 		<div>Nazionalita: <h:inputText value="#{autoreController.nazionalita}" /></div>
 		<div>Data di nascita: <h:inputText value="#{autoreController.dataNascita}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
 		<div>Data di morte: <h:inputText value="#{autoreController.dataMorte}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>

@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png"/>
+<link rel="manifest" href="favicons/manifest.json"/>
+<link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+<meta name="theme-color" content="#ffffff" />
 <title>Galleria D'Arte</title>
 </head>
 
