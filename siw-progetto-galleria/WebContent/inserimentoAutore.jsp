@@ -20,11 +20,17 @@
 </nav>
 <f:view>
 	<h:form>
-		<div>Nome: <h:inputText value="#{autoreController.nome}" required="true" /></div>
-		<div>Cognome: <h:inputText value="#{autoreController.cognome}" required="true" /></div>
-		<div>Nazionalita: <h:inputText value="#{autoreController.nazionalita}" /></div>
-		<div>Data di nascita: <h:inputText value="#{autoreController.dataNascita}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
-		<div>Data di morte: <h:inputText value="#{autoreController.dataMorte}" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
+		<div>Nome:<h:inputText id="nome" value="#{autoreController.nome}" required="true"/>
+				<h:message for="nome" errorClass="errorMessage" /> </div>
+		<div>Cognome: <h:inputText id="cognome" value="#{autoreController.cognome}" required="true" />
+		<h:message for="cognome" errorClass="errorMessage" /></div>
+		
+		<div>Nazionalita: <h:inputText id="nazionalita" value="#{autoreController.nazionalita}" required="true" />
+		<h:message for="nazionalita" errorClass="errorMessage" /></div>
+		<div>Data di nascita: <h:inputText id="dataNascita" value="#{autoreController.dataNascita}" required="true" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
+		<h:message for="dataNascita" errorClass="errorMessage" /></div>
+		<div>Data di morte: <h:inputText id="dataMorte" value="#{autoreController.dataMorte}" required="true" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
+		</div>
 		<div><h:commandButton value="Submit" action="#{autoreController.inserisciAutore}" /></div>
 	</h:form>
 </f:view>

@@ -28,9 +28,12 @@ public class AutoreService {
 	}
 	
 	public void rimuoviAutore(Long id) {
-		
+		Autore a = em.find(Autore.class, id);
+		em.remove(a);
 	}
-	
+	public Autore ottieniAutore(Long id) {
+		return em.find(Autore.class, id);
+	}
 	public List<Autore> listaAutori() {
 		TypedQuery<Autore> query = em.createQuery("SELECT a FROM Autore a",Autore.class);
 		return query.getResultList();

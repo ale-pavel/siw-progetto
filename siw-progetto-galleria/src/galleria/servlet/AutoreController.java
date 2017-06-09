@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 import galleria.model.Autore;
+import galleria.model.Quadro;
 import galleria.service.AutoreService;
 
 @ManagedBean(name="autoreController")
@@ -16,6 +17,8 @@ public class AutoreController {
 	private String nazionalita;
 	private Date dataNascita;
 	private Date dataMorte;
+	private Autore autoreCorrente;
+
 	@EJB(beanName="autoreService")
 	private AutoreService autoreService;
 	
@@ -24,6 +27,22 @@ public class AutoreController {
 		return "autore.jsf";
 	}
 	
+	public String rimuoviAutore(Long id) {
+		autoreService.rimuoviAutore(id);
+		return "modificaPaginaAutore.jsf";
+	}
+	public String modificaPaginaAutore(Long id){
+		autoreCorrente=autoreService.ottieniAutore(id);
+		return "modificaAutore.jsf";
+	}
+	public String modificaAutore(Long id){
+		autoreCorrente.setCognome(cognome);
+		autoreCorrente.setDataMorte(dataMorte);
+		autoreCorrente.setDataNascita(dataNascita);
+		autoreCorrente.setNazionalita(nazionalita);
+		autoreCorrente.setNome(nome);
+		return "autore.jsf";
+	}
 	public List<Autore> listaAutori() {
 		return autoreService.listaAutori();
 	}
@@ -39,7 +58,14 @@ public class AutoreController {
 	public String getNome() {
 		return nome;
 	}
-	
+	public Autore getAutoreCorrente() {
+		return autoreCorrente;
+	}
+
+	public void setAutoreCorrente(Autore autoreCorrente) {
+		this.autoreCorrente = autoreCorrente;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

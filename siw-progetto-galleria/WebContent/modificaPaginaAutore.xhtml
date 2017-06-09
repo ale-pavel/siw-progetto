@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<style>
+	.indice{font-size:20;font-weight:bold}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Modifica Autore</title>
+</head>
+<body>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav id="navMenu" class="navbar navbar-default"> <script
+			src="navBar.js"></script> </nav>
+		<f:view>
+			<p class="indice">&nbsp;&nbsp;&nbsp; Nome &emsp;&emsp;  Cognome &emsp;&emsp;  Nazionalita &emsp;&emsp; Data Nascita &emsp;&emsp; Data Morte </p>
+			<ul class="list-group">
+			<c:forEach var="autore" items="#{autoreController.listaAutori()}">
+				<h:form>
+					
+						<li class="list-group-item">#{autore.nome} &emsp;   #{autore.cognome} &emsp;
+							#{autore.nazionalita} &emsp; #{autore.dataNascita} &emsp; #{autore.dataMorte} 
+							
+						</li>
+						<h:commandButton
+								styleClass="btn btn-danger col-sm-2" value="Cancella"
+								action="#{autoreController.rimuoviAutore(autore.id)}" />
+								<h:commandButton
+								styleClass="btn btn-lg btn-primary" value="modifica"
+								action="#{autoreController.modificaPaginaAutore(autore.id)}" />
+								<br></br><br></br>
+								
+					
+				</h:form>
+			</c:forEach>
+			</ul>
+
+
+
+		</f:view>
+	</div>
+</body>
+</html>
