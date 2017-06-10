@@ -4,14 +4,19 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import galleria.model.Autore;
 import galleria.model.Quadro;
 import galleria.service.AutoreService;
 
 @ManagedBean(name="autoreController")
+@SessionScoped
 public class AutoreController {
+	
+	private Long id;
 	private String nome;
 	private String cognome;
 	private String nazionalita;
@@ -23,7 +28,7 @@ public class AutoreController {
 	private AutoreService autoreService;
 	
 	public String inserisciAutore() {
-		autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
+		autoreCorrente=autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
 		return "autore.jsf";
 	}
 	
@@ -33,14 +38,17 @@ public class AutoreController {
 	}
 	public String modificaPaginaAutore(Long id){
 		autoreCorrente=autoreService.ottieniAutore(id);
+		this.id=autoreCorrente.getId();
+		nome=autoreCorrente.getNome();
+		cognome=autoreCorrente.getCognome();
+		nazionalita=autoreCorrente.getNazionalita();
+		dataNascita=autoreCorrente.getDataNascita();
+		dataMorte=autoreCorrente.getDataMorte();
 		return "modificaAutore.jsf";
 	}
 	public String modificaAutore(Long id){
-		autoreCorrente.setCognome(cognome);
-		autoreCorrente.setDataMorte(dataMorte);
-		autoreCorrente.setDataNascita(dataNascita);
-		autoreCorrente.setNazionalita(nazionalita);
-		autoreCorrente.setNome(nome);
+		autoreService.rimuoviAutore(id);
+		autoreCorrente=autoreService.inserisciAutore(nome, cognome, nazionalita, dataNascita, dataMorte);
 		return "autore.jsf";
 	}
 	public List<Autore> listaAutori() {
@@ -98,6 +106,14 @@ public class AutoreController {
 		return dataMorte;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setDataMorte(Date dataMorte) {
 		this.dataMorte = dataMorte;
 	}

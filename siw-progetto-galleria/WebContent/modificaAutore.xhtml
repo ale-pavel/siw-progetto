@@ -1,37 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="stylesheet" href="bootstrap.min.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Modifica Autore</title>
 </head>
 <body>
 	<div class="container">
-		
+		<!-- Static navbar -->
+		<nav id="navMenu" class="navbar navbar-default"> <script
+			src="navBar.js"></script> </nav>
 		<f:view>
-			<div>Nome:<h:inputText id="nome" value="#{autoreController.autoreCorrente.nome}" required="true"/>
-				<h:message for="nome" errorClass="errorMessage" /> </div>
-		<div>Cognome: <h:inputText id="cognome" value="#{autoreController.autoreCorrente.cognome}" required="true" />
-		<h:message for="cognome" errorClass="errorMessage" /></div>
-		
-		<div>Nazionalita: <h:inputText id="nazionalita" value="#{autoreController.autoreCorrente.nazionalita}" required="true" />
-		<h:message for="nazionalita" errorClass="errorMessage" /></div>
-		<div>Data di nascita: <h:inputText id="dataNascita" value="#{autoreController.autoreCorrente.dataNascita}" required="true" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
-		<h:message for="dataNascita" errorClass="errorMessage" /></div>
-		<div>Data di morte: <h:inputText id="dataMorte" value="#{autoreController.autoreCorrente.dataMorte}" required="true" ><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText>
-		</div>
-		<div><h:commandButton styleClass="btn btn-lg btn-primary" value="Modifica" action="#{autoreController.modificaAutore(autoreController.autoreCorrente.id)}" /></div>
+			<h:form>
 
+				<div>
+					Nome:
+					<h:inputText id="nome"
+						value="#{autoreController.nome}" required="true" />
+					<h:message for="nome" errorClass="errorMessage" />
+				</div>
+				<div>
+					Cognome:
+					<h:inputText id="cognome"
+						value="#{autoreController.cognome}" required="true" />
+					<h:message for="cognome" errorClass="errorMessage" />
+				</div>
 
+				<div>
+					Nazionalita:
+					<h:inputText id="nazionalita"
+						value="#{autoreController.nazionalita}"
+						required="true" />
+					<h:message for="nazionalita" errorClass="errorMessage" />
+				</div>
+				<div>
+					Data di nascita:
+					<h:inputText id="dataNascita"
+						value="#{autoreController.dataNascita}"
+						required="true">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+					<h:message for="dataNascita" errorClass="errorMessage" />
+				</div>
+				<div>
+					Data di morte:
+					<h:inputText id="dataMorte"
+						value="#{autoreController.dataMorte}"
+						required="true">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+				</div>
+				
+				<div>
+					<h:commandButton styleClass="btn btn-lg btn-primary"
+						value="modifica"
+						action="#{autoreController.modificaAutore(autoreController.autoreCorrente.id)}" />
+				</div>
+			</h:form>
 		</f:view>
 	</div>
 </body>

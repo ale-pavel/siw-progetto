@@ -29,13 +29,13 @@
 					
 						<li class="list-group-item">#{autore.nome} &emsp;   #{autore.cognome} &emsp;
 							#{autore.nazionalita} &emsp; #{autore.dataNascita} &emsp; #{autore.dataMorte} 
-							
+							 
 						</li>
 						<h:commandButton
-								styleClass="btn btn-danger col-sm-2" value="Cancella"
+								styleClass="btn btn-lg btn-danger" value="Cancella"
 								action="#{autoreController.rimuoviAutore(autore.id)}" />
 								<h:commandButton
-								styleClass="btn btn-lg btn-primary" value="modifica"
+								styleClass="btn btn-lg btn-primary" value="Modifica"
 								action="#{autoreController.modificaPaginaAutore(autore.id)}" />
 								<br></br><br></br>
 								

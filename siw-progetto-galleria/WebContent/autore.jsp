@@ -17,11 +17,11 @@
 		<!-- Static navbar -->
 		<nav id="navMenu" class="navbar navbar-default"><script src="navBar.js"></script></nav>
 		<f:view>
-	Nome:${autoreController.nome}
-	Cognome:${autoreController.cognome}
-	Nazionalita:${autoreController.nazionalita}
-	Data di nascita:${autoreController.dataNascita}
-	Data di morte:${autoreController.dataMorte}
+	Nome:${autoreController.autoreCorrente.nome}
+	Cognome:${autoreController.autoreCorrente.cognome}
+	Nazionalita:${autoreController.autoreCorrente.nazionalita}
+	Data di nascita:${autoreController.autoreCorrente.dataNascita}
+	Data di morte:${autoreController.autoreCorrente.dataMorte}
 </f:view>
 	</div>
 </body>
