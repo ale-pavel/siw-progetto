@@ -10,6 +10,7 @@ document.getElementById("navMenu").innerHTML =
 		'<li><a href="inserimentoQuadro.jsf">Inserimento Quadro</a></li>' +
 		'<li><a href="inserimentoAutore.jsf">Inserimento Autore</a></li>' +
 		'<li><a href="modificaPaginaAutore.jsf">Modifica Autore</a></li>' +
+		'<li><a href="modificaPaginaQuadro.jsf">Modifica Quadro</a></li>' +
 		'<li><a href="#">Contact</a></li>' +
 	'</ul>' +
 	'<ul class="nav navbar-nav navbar-right">' +

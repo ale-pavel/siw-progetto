@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Inserimento Quadro</title>
+</head>
+<body>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav id="navMenu" class="navbar navbar-default">
+		<script src="navBar.js"></script>
+		</nav>
+		<f:view>		
+			<ul class="list-group">
+			<c:forEach var="quadro" items="#{quadroController.listaQuadri()}">
+				<h:form enctype="multipart/form-data">
+					
+						<li class="list-group-item">#{quadro.titolo} &emsp;   #{quadro.anno} &emsp;
+							#{quadro.tecnica} &emsp; #{quadro.dimensioni}&emsp; 
+							#{quadro.autore.nome} #{quadro.autore.cognome} &emsp; <br></br>
+							<o:graphicImage value="#{imgLoad.get(quadro.id)}"/>
+							 
+						</li>
+						<h:commandButton
+								styleClass="btn btn-lg btn-danger" value="Cancella"
+								action="#{quadroController.rimuoviQuadro(quadro.id)}" />
+								<h:commandButton
+								styleClass="btn btn-lg btn-primary" value="Modifica"
+								action="#{quadroController.modificaPaginaQuadro(quadro.id)}" />
+								<br></br><br></br>
+								
+					
+				</h:form>
+			</c:forEach>
+			</ul>
+
+		</f:view>
+	</div>
+</body>
+</html>

@@ -7,13 +7,15 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Part;
 
 import galleria.model.Quadro;
 import galleria.service.QuadroService;
-
+@SessionScoped
 @ManagedBean(name="quadroController")
 public class QuadroController{
+	private Long id;
 	private String titolo;
 	private Integer anno;
 	private String tecnica;
@@ -22,6 +24,8 @@ public class QuadroController{
 	private Long idAutore;
 	//"File" (di tipo Part) ottenuto dal form inserimentoQuadro.jsf mediante h:inputFile
 	private Part imgFile;
+	private byte[] imgFileByte;
+
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
 	//Utilizzato per mostrare il quadro desiderato (mediante visualizzaQuadroCorrente) sulla pagina quadro.jsf, e dopo l'inserimento nel db in automatico
@@ -52,14 +56,41 @@ public class QuadroController{
 
 	public String rimuoviQuadro(Long id) {
 		quadroService.rimuoviQuadro(id);
-		return "listaQuadri.jsf";
+		return "modificaPaginaQuadro.jsf";
 	}
 
 	public String visualizzaQuadroCorrente(Long id) {
 		quadroCorrente = quadroService.ottieniQuadro(id);
 		return "quadro.jsf";
 	}
-
+	public String modificaPaginaQuadro(Long id){
+		quadroCorrente=quadroService.ottieniQuadro(id);
+		this.id=quadroCorrente.getId();
+		
+		titolo=quadroCorrente.getTitolo();
+		anno=quadroCorrente.getAnno();
+		tecnica=quadroCorrente.getTecnica();
+		dimensioni=quadroCorrente.getDimensioni();
+		imgFileByte=quadroCorrente.getImgFile();
+		idAutore=quadroCorrente.getAutore().getId();
+		return "modificaQuadro.jsf";
+	}
+	public String modificaQuadro(Long id){
+		quadroService.rimuoviQuadro(id);
+		if(imgFile==null){
+			Quadro q = new Quadro();
+			q.setTitolo(titolo);
+			q.setAnno(anno);
+			q.setTecnica(tecnica);
+			q.setDimensioni(dimensioni);
+			q.setImgFile(imgFileByte);
+			quadroCorrente = quadroService.inserisciQuadro(q, idAutore);
+		}
+		else{
+			inserisciQuadro();
+		}
+		return "quadro.jsf";
+	}
 
 	public List<Quadro> listaQuadri() {
 		return quadroService.listaQuadri();
@@ -83,6 +114,22 @@ public class QuadroController{
 
 	public String getTecnica() {
 		return tecnica;
+	}
+
+	public byte[] getImgFileByte() {
+		return imgFileByte;
+	}
+
+	public void setImgFileByte(byte[] imgFileByte) {
+		this.imgFileByte = imgFileByte;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDimensioni() {
