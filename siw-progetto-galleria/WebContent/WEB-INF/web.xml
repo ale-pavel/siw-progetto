@@ -27,6 +27,8 @@
 			<url-pattern>/inserimentoAutore.jsf</url-pattern>
 			<url-pattern>/inserimentoQuadro.jsf</url-pattern>
 			<url-pattern>/modificaPaginaAutore.jsf</url-pattern>
+			<url-pattern>/modificaPaginaQuadro.jsf</url-pattern>
+			<url-pattern>/modificaAutore.jsf</url-pattern>
 			<url-pattern>/modificaQuadro.jsf</url-pattern>
 			<!-- MODIFICARE: Le pagine protette vanno in /protetto/ , la navBar unica non consente questa soluzione (/protetto/protetto/...) -->
 		</web-resource-collection>
