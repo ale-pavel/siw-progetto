@@ -44,9 +44,7 @@ a.btn {margin-right:10px}
 					<h:form>
     					<h:commandLink styleClass="list-group-item col-sm-5" value="#{quadro.titolo}" action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
 					</h:form>
-					<h:form>
-						<div><h:commandButton styleClass="btn btn-danger col-sm-2" value="Cancella" action="#{quadroController.rimuoviQuadro(quadro.id)}" /></div>
-					</h:form>
+					
 					<o:graphicImage value="#{quadro.imgFile}" dataURI="true"/>
 					<!-- Utilizzo di omnifaces senza complicazioni (qui ho disponibile il quadro direttamente) -->
 				</div>
