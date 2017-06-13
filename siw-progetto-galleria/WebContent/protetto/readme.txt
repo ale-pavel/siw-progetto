@@ -2,5 +2,5 @@ Inserire i file da proteggere con login in questa cartella, assicurarsi di inclu
 modificare la navBar per non avere broken links
 
 Estratto da /conf/tomcat-users.xml:
-  <role rolenam="amministratore" />
+  <role rolename="amministratore" />
   <user username="siw" password="siw" roles="amministratore" />

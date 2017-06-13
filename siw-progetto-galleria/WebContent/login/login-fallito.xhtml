@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -20,11 +20,11 @@ input[type=text], input[type=password] {
 <body>
 	<f:view>
 		<h1>Effettuare il login</h1>
-		<p>Inserire le credenziali di amministratore per procedere.</p>
+		<p>Le informazioni inserite non sono corrette, provare di nuovo.</p>
 		<form action="j_security_check" method="post" name="loginForm">
 			<label for="user">Username:</label> 
 			<input id="user" type="text" name="j_username" size="20"/> 
-			<label for="password">Password</label>
+			<label for="password">Password</label> 
 			<input id="password" type="password" name="j_password" size="20"/>
 			<input type="submit" value="Login"/>
 		</form>
