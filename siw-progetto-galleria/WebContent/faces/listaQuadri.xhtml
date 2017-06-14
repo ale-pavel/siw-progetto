@@ -16,9 +16,10 @@
 	</style>
 </h:head>
 <h:body>
-	<f:view>	
+	<f:view>
+	<div class="container">	
 		<ui:include src="/resources/html/navBar.xhtml" />
-		<div class="container">
+		
 			<h2>Lista Quadri inseriti:</h2>
 			<div class="list-group">
 				<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
