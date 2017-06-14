@@ -1,56 +1,50 @@
-package galleria.servlet;
+package galleria.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import galleria.model.Autore;
-import galleria.model.Quadro;
 import galleria.service.AutoreService;
 
 @ManagedBean(name="autoreController")
-@SessionScoped
 public class AutoreController {
-	
-	private Long id;
 	private String nome;
 	private String cognome;
 	private String nazionalita;
 	private Date dataNascita;
 	private Date dataMorte;
 	private Autore autoreCorrente;
-
 	@EJB(beanName="autoreService")
 	private AutoreService autoreService;
+	private Map<String,Object> attributiSessione = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	
 	public String inserisciAutore() {
 		autoreCorrente=autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
-		return "autore.jsf";
+		return "/faces/autore.jsf";
 	}
 	
 	public String rimuoviAutore(Long id) {
 		autoreService.rimuoviAutore(id);
-		return "modificaPaginaAutore.jsf";
+		return "/protetto/gestioneAutori.jsf";
 	}
-	public String modificaPaginaAutore(Long id){
-		autoreCorrente=autoreService.ottieniAutore(id);
-		this.id=autoreCorrente.getId();
-		nome=autoreCorrente.getNome();
-		cognome=autoreCorrente.getCognome();
-		nazionalita=autoreCorrente.getNazionalita();
-		dataNascita=autoreCorrente.getDataNascita();
-		dataMorte=autoreCorrente.getDataMorte();
-		return "modificaAutore.jsf";
+	
+	public String predisponiModificaAutore(Long id){
+		autoreCorrente = autoreService.ottieniAutore(id);
+		attributiSessione.put("autoreTemp", autoreCorrente);
+		return "/protetto/modificaAutore.jsf";
 	}
-	public String modificaAutore(Long id){
-		autoreService.rimuoviAutore(id);
-		autoreCorrente=autoreService.inserisciAutore(nome, cognome, nazionalita, dataNascita, dataMorte);
-		return "autore.jsf";
+	
+	public String modificaAutore(Autore autoreTemp){
+		autoreService.aggiornaAutore(autoreTemp);
+		attributiSessione.remove("autoreTemp");
+		return "/protetto/gestioneAutori.jsf";
 	}
+	
 	public List<Autore> listaAutori() {
 		return autoreService.listaAutori();
 	}
@@ -66,6 +60,7 @@ public class AutoreController {
 	public String getNome() {
 		return nome;
 	}
+	
 	public Autore getAutoreCorrente() {
 		return autoreCorrente;
 	}
@@ -106,14 +101,6 @@ public class AutoreController {
 		return dataMorte;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public void setDataMorte(Date dataMorte) {
 		this.dataMorte = dataMorte;
 	}

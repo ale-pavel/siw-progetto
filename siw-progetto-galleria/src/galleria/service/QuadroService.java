@@ -34,5 +34,10 @@ public class QuadroService {
 		TypedQuery<Quadro> query = em.createQuery("SELECT a FROM Quadro a",Quadro.class);
 		return query.getResultList();
 	}
+	
+	public void aggiornaQuadro(Quadro quadroTemp, Long idAutore) {
+		quadroTemp.setAutore(em.find(Autore.class, idAutore));
+		em.merge(quadroTemp);
+	}
 
 }

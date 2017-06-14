@@ -1,57 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jstl/core"
-      xmlns:o="http://omnifaces.org/ui"> 
-<!-- I TAG SONO DIFFERENTI, MODIFICARE LA STRUTTURA DEI FILE (resources/css etc...)
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
 <h:head>
-	<h:outputStylesheet library="css" nane="bootstrap.min.css"/>
-	<h:outputScript library="js" name="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
-	<h:outputScript library="js" name="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputScript name="js/jquery.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Galleria Quadri</title>
-</h:head> 
-<h:body> 
-	
-</h:body> 
-
-Da utilizzare al posto dei tag html normali, i tag jsf funzionano solo su .xhtml (da creare direttamente in questo formato, 
-nel mio caso mediante JBoss tools che ho installato ho del codice di default come gli attributi dentro <html> e i tag gia' scritti).
-Possibile creare .xhtml senza JBoss, cercare online come fare
-
-Aggiungere navbar!
- -->
- 
- <head>
-<link rel="stylesheet" href="bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<style>
-.list-group-item {margin-right:10px}
-a.btn {margin-right:10px}
-</style>
-<title>Galleria Quadri</title>
-</head>
- 
-<body>
-	<div class="container">
-		<h2>Lista Quadri inseriti:</h2>
-		<div class="list-group">
-			<c:forEach var="quadro" items="#{quadroController.listaQuadri()}">
-				<div class="col-sm-12">
-					<h:form>
-    					<h:commandLink styleClass="list-group-item col-sm-5" value="#{quadro.titolo}" action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
-					</h:form>
-					
-					<o:graphicImage value="#{quadro.imgFile}" dataURI="true"/>
-					<!-- Utilizzo di omnifaces senza complicazioni (qui ho disponibile il quadro direttamente) -->
-				</div>
-			</c:forEach>
+	<style>
+		.list-group-item {margin-right:10px}
+		a.btn {margin-right:10px}
+	</style>
+</h:head>
+<h:body>
+	<f:view>	
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container">
+			<h2>Lista Quadri inseriti:</h2>
+			<div class="list-group">
+				<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
+					<div class="col-sm-12">
+						<h:form>
+		   					<h:commandLink styleClass="list-group-item col-sm-5" value="#{quadro.titolo}" 
+		   						action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
+						</h:form>
+						<o:graphicImage value="#{quadro.imgFile}" dataURI="true"/>
+					</div>
+				</ui:repeat>
+			</div>
+			<h:link value="Homepage" outcome="/index.jsf" styleClass="btn btn-primary" />
 		</div>
-		<a href="index.jsf" class="btn btn-primary">Homepage</a>
-	</div>
-</body>
- 
+	</f:view>
+</h:body>
 </html>

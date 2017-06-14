@@ -38,5 +38,9 @@ public class AutoreService {
 		TypedQuery<Autore> query = em.createQuery("SELECT a FROM Autore a",Autore.class);
 		return query.getResultList();
 	}
+
+	public void aggiornaAutore(Autore autoreTemp) {
+		em.merge(autoreTemp);
+	}
 	
 }

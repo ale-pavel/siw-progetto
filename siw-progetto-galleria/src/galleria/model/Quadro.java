@@ -24,6 +24,13 @@ public class Quadro {
 	
 	public Quadro() {}
 	
+	public Quadro(String titolo, Integer anno, String tecnica, String dimensioni) {
+		this.titolo = titolo;
+		this.anno = anno;
+		this.tecnica = tecnica;
+		this.dimensioni = dimensioni;
+	}
+
 	public byte[] getImgFile() {
 		return imgFile;
 	}

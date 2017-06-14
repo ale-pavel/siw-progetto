@@ -14,7 +14,6 @@
 	</welcome-file-list>
 	<servlet-mapping>
 		<servlet-name>SiwGalleria</servlet-name>
-		<!-- I file .xhtml e .jsp vengono mappati in .jsf con successo -->
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 	<security-role>
@@ -23,26 +22,17 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Area protetta</web-resource-name>
-			<url-pattern>/protetto/*</url-pattern>
-			<url-pattern>/inserimentoAutore.jsf</url-pattern>
-			<url-pattern>/inserimentoQuadro.jsf</url-pattern>
-			<url-pattern>/modificaPaginaAutore.jsf</url-pattern>
-			<url-pattern>/modificaPaginaQuadro.jsf</url-pattern>
-			<url-pattern>/modificaAutore.jsf</url-pattern>
-			<url-pattern>/modificaQuadro.jsf</url-pattern>
-			<!-- MODIFICARE: Le pagine protette vanno in /protetto/ , la navBar unica non consente questa soluzione (/protetto/protetto/...) -->
+			<url-pattern>/protettoOFF/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<!-- Il rolename deve essere creato sia nel web.xml (vedere più sopra), sia dentro tomcat-users.xml (dove sono salvate le credenziali) -->
 			<role-name>amministratore</role-name>
 		</auth-constraint>
 	</security-constraint>
 	<login-config>
-		<!-- Metodo di richiesta di autenticazione (possibile sia via browser, con un overlay che compare, sia via form dentro una pagina specificata -->
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/login/login.jsp</form-login-page>
-			<form-error-page>/login/login-fallito.jsp</form-error-page>
+			<form-login-page>/login/login.jsf</form-login-page>
+			<form-error-page>/login/login-fallito.jsf</form-error-page>
 		</form-login-config>
 	</login-config>
 	<context-param>

@@ -86,4 +86,8 @@ public class Autore {
 		this.quadri = quadri;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }

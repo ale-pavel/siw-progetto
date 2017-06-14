@@ -1,95 +1,79 @@
-package galleria.servlet;
+package galleria.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 import galleria.model.Quadro;
 import galleria.service.QuadroService;
-@SessionScoped
+
 @ManagedBean(name="quadroController")
 public class QuadroController{
-	private Long id;
 	private String titolo;
 	private Integer anno;
 	private String tecnica;
 	private String dimensioni;
-	//Id dell'autore scelto tra quelli esistenti nella checklist, di default è vuoto nel form
 	private Long idAutore;
 	//"File" (di tipo Part) ottenuto dal form inserimentoQuadro.jsf mediante h:inputFile
 	private Part imgFile;
 	private byte[] imgFileByte;
-
+	private Quadro quadroCorrente;
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
-	//Utilizzato per mostrare il quadro desiderato (mediante visualizzaQuadroCorrente) sulla pagina quadro.jsf, e dopo l'inserimento nel db in automatico
-	private Quadro quadroCorrente;
+	private Map<String,Object> attributiSessione = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 
 	public String inserisciQuadro() {
-		Quadro q = new Quadro();
-		q.setTitolo(titolo);
-		q.setAnno(anno);
-		q.setTecnica(tecnica);
-		q.setDimensioni(dimensioni);
-		//Conversione di imgFile da Part a byte[] per l'inserimento nel db (Postgres)
-		//byte[] img = new byte[(int)imgFile.getSize()];
+		Quadro q = new Quadro(titolo, anno, tecnica, dimensioni);
+		q.setImgFile(this.getImgFromPart(imgFile));
+		quadroCorrente = quadroService.inserisciQuadro(q, idAutore);
+		return "/faces/quadro.jsf";
+	}
+
+	private byte[] getImgFromPart(Part imgPart) {
+		byte[] imgByte;
 		try {
-			InputStream is = imgFile.getInputStream();
-			byte[] buffer = new byte[(int)imgFile.getSize()];
+			InputStream is = imgPart.getInputStream();
+			byte[] buffer = new byte[(int)imgPart.getSize()];
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			for (int length=0;(length=is.read(buffer))>0;) 
 				output.write(buffer,0,length);
-			q.setImgFile(output.toByteArray());
-		} catch (IOException | NullPointerException e) {
-			return "inserimentoQuadro.jsf";
-		}	
-		//Try - catch da sistemare in modo ottimale, comunque funzionante
-		quadroCorrente = quadroService.inserisciQuadro(q, idAutore);
-		return "quadro.jsf";
+			imgByte = output.toByteArray();
+		} catch (IOException | NullPointerException e) {	//Nel caso in cui l'immagine non viene inserita
+			imgByte = new byte[0];
+		}
+		return imgByte;
 	}
 
 	public String rimuoviQuadro(Long id) {
 		quadroService.rimuoviQuadro(id);
-		return "modificaPaginaQuadro.jsf";
+		return "/protetto/gestioneQuadri.jsf";
 	}
 
 	public String visualizzaQuadroCorrente(Long id) {
 		quadroCorrente = quadroService.ottieniQuadro(id);
-		return "quadro.jsf";
+		return "/faces/quadro.jsf";
 	}
-	public String modificaPaginaQuadro(Long id){
-		quadroCorrente=quadroService.ottieniQuadro(id);
-		this.id=quadroCorrente.getId();
-		
-		titolo=quadroCorrente.getTitolo();
-		anno=quadroCorrente.getAnno();
-		tecnica=quadroCorrente.getTecnica();
-		dimensioni=quadroCorrente.getDimensioni();
-		imgFileByte=quadroCorrente.getImgFile();
-		idAutore=quadroCorrente.getAutore().getId();
-		return "modificaQuadro.jsf";
+
+	public String predisponiModificaQuadro(Long id){
+		quadroCorrente = quadroService.ottieniQuadro(id);
+		attributiSessione.put("quadroTemp", quadroCorrente);
+		return "/protetto/modificaQuadro.jsf";
 	}
-	public String modificaQuadro(Long id){
-		quadroService.rimuoviQuadro(id);
-		if(imgFile==null){
-			Quadro q = new Quadro();
-			q.setTitolo(titolo);
-			q.setAnno(anno);
-			q.setTecnica(tecnica);
-			q.setDimensioni(dimensioni);
-			q.setImgFile(imgFileByte);
-			quadroCorrente = quadroService.inserisciQuadro(q, idAutore);
-		}
-		else{
-			inserisciQuadro();
-		}
-		return "quadro.jsf";
+
+	public String modificaQuadro(Quadro quadroTemp){
+		byte[] imgForm = this.getImgFromPart(imgFile);
+		if(imgForm.length > 0)	//Se la lunghezza è > 0 vuol dire che è stata caricata una nuova immagine, da sostituire a quella in Quadro
+			quadroTemp.setImgFile(imgForm);
+		quadroService.aggiornaQuadro(quadroTemp, idAutore);
+		attributiSessione.remove("quadroTemp");
+		return "/protetto/gestioneQuadri.jsf";
 	}
 
 	public List<Quadro> listaQuadri() {
@@ -122,14 +106,6 @@ public class QuadroController{
 
 	public void setImgFileByte(byte[] imgFileByte) {
 		this.imgFileByte = imgFileByte;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDimensioni() {

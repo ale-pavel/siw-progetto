@@ -1,75 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:h="http://java.sun.com/jsf/html" 
 	xmlns:f="http://java.sun.com/jsf/core" 
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:o="http://omnifaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<link rel="stylesheet" href="bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Modifica quadro</title>
-</head>
-<body>
-	<div class="container">
-		<!-- Static navbar -->
-		<nav id="navMenu" class="navbar navbar-default"> <script
-			src="navBar.js"></script> </nav>
-		<f:view>
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputScript name="js/jquery.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+	<title>Modifica Quadro</title>
+</h:head>
+<h:body>
+	<f:view>	
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container">
 			<h:form enctype="multipart/form-data">
-
-				<div>
-					Titolo:
-					<h:inputText id="titolo"
-						value="#{quadroController.titolo}" required="true" />
-					<h:message for="titolo" errorClass="errorMessage" />
+				<div class="col-sm-4">
+					<div>Titolo:
+						<h:inputText id="titolo" value="#{quadroTemp.titolo}" required="true" />
+						<h:message for="titolo" errorClass="errorMessage" /></div>
+					<div>Anno:
+						<h:inputText id="anno" value="#{quadroTemp.anno}" />
+						<h:message for="anno" errorClass="errorMessage" /></div>
+					<div>Tecnica:
+						<h:inputText id="tecnica" value="#{quadroTemp.tecnica}" />
+						<h:message for="tecnica" errorClass="errorMessage" /></div>
+					<div>Dimensioni:
+						<h:inputText id="dimensioni" value="#{quadroTemp.dimensioni}" />
+						<h:message for="dimensioni" errorClass="errorMessage" /></div>
+					<div>Autore:
+						<h:selectOneMenu id="idAutore" value="#{quadroController.idAutore}" required="true" >
+						   	<f:selectItem itemValue="#{quadroTemp.autore.id}" itemLabel="Autore attuale" />
+						   	<f:selectItems var="autore" value="#{autoreController.listaAutori()}"
+						   		itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}" />
+						</h:selectOneMenu>
+						<h:message for="idAutore" errorClass="errorMessage" /></div>
+					<div>
+						<h:commandButton styleClass="btn btn-primary" value="modifica" 
+							action="#{quadroController.modificaQuadro(quadroTemp)}" /></div>
 				</div>
-				<div>
-					Anno:
-					<h:inputText id="anno"
-						value="#{quadroController.anno}" required="true" />
-					<h:message for="anno" errorClass="errorMessage" />
-				</div>
-
-				<div>
-					Tecnica:
-					<h:inputText id="tecnica"
-						value="#{quadroController.tecnica}"
-						required="true" />
-					<h:message for="tecnica" errorClass="errorMessage" />
-				</div>
-				<div>
-					Dimensioni:
-					<h:inputText id="dimensioni"
-						value="#{quadroController.dimensioni}"
-						required="true">
-						
-					</h:inputText>
-					<h:message for="dimensioni" errorClass="errorMessage" />
-				</div>
-				<div>Autore:<h:selectOneMenu id="idAutore" value="#{quadroController.idAutore}" >
-				   	<f:selectItem itemValue="" itemLabel="Selezionare l'autore" />
-				   	<c:forEach var="autore" items="#{autoreController.listaAutori()}" >
-				   		<f:selectItem itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}" />
-				   	</c:forEach>
-				</h:selectOneMenu>
-				<h:message for="idAutore" errorClass="errorMessage" /></div>
-				<div>
-				
-					Immagine:<o:graphicImage value="#{imgLoad.get(quadroController.id)}"/>
-					<h:inputFile value="#{quadroController.imgFile}"/>
-			
-				</div>
-				
-				<div>
-					<h:commandButton styleClass="btn btn-lg btn-primary"
-						value="modifica"
-						action="#{quadroController.modificaQuadro(quadroController.quadroCorrente.id)}" />
+				<div class="col-sm-8">
+					<div>Immagine:
+						<o:graphicImage value="#{quadroTemp.imgFile}" dataURI="true" />
+						<o:inputFile value="#{quadroController.imgFile}" accept="image/*"/></div>
 				</div>
 			</h:form>
-		</f:view>
-	</div>
-</body>
+		</div>
+	</f:view>
+</h:body>
 </html>

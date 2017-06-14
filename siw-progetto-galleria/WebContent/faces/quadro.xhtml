@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"> 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<link rel="stylesheet" href="bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Quadro Inserito</title>
-</head>
-<body>
-	<div class="container">
-		<!-- Static navbar -->
-		<nav id="navMenu" class="navbar navbar-default"><script src="navBar.js"></script></nav>
-		<f:view>
-		<ui:debug />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputScript name="js/jquery.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+	<title>Informazioni Quadro</title>
+</h:head>
+<h:body>
+	<f:view>	
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container">
 			<div>Titolo:#{quadroController.quadroCorrente.titolo}</div>
 			<div>Anno:#{quadroController.quadroCorrente.anno}</div>
 			<div>Dimensioni:#{quadroController.quadroCorrente.dimensioni}</div>
 			<div>Tecnica:#{quadroController.quadroCorrente.tecnica}</div>
 			<div>Autore:#{quadroController.quadroCorrente.autore.nome} #{quadroController.quadroCorrente.autore.cognome}</div>
-			<div>Immagine:<o:graphicImage value="#{imgLoad.get(quadroController.quadroCorrente.id)}"/></div>
-			<!-- Utilizzata la libreria omnifaces per utilizzare il tag o:graphicImage, che consente un piccolo aiuto (?) per recuperare l'immagine dal db -->
-		</f:view>
-	</div>
-</body>
+			<div>Immagine:<o:graphicImage value="#{quadroController.quadroCorrente.imgFile}" dataURI="true" /></div>
+		</div>
+	</f:view>
+</h:body>
 </html>
