@@ -21,17 +21,15 @@
 	<ui:include src="/resources/html/navBar.xhtml" />
 	<div class="container">	
 		<h:form>
-		<h:inputText id="nomeAutore" value="#{autoreController.nomeAutore}" required="true"/>
-		<h:commandButton value="Submit" action="#{autoreController.getAutore(autoreController.nomeAutore)}" />
 		</h:form>
 			<div class="list-group">
-				<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
+				<ui:repeat var="quadro" value="#{autoreController.listaQuadri(autoreTemp.id)}">
 					<div class="col-sm-12">
 						<div class="col-sm-4">
 						<ul class="list-group">
 							<li class="list-group-item"><h:form>
 		   						Titolo: <h:commandLink value="#{quadro.titolo}" 
-		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
+		   							action="#{autoreController.visualizzaQuadroCorrente(quadro.id)}" />
 							</h:form>
 							</li>
 							<li class="list-group-item">Anno: #{quadro.anno}</li>

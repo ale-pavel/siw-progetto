@@ -12,8 +12,9 @@
 </h:head>
 <h:body>
 	<f:view>
+	<ui:include src="/resources/html/navBar.xhtml" />
 	<div class="container">
-		<ui:include src="/resources/html/navBar.xhtml" />
+		
 		
 		<h:form>
 			<div>Nome:<h:inputText id="nome" value="#{autoreController.nome}" required="true"/>
