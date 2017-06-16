@@ -29,18 +29,12 @@ public class AutoreController {
 		autoreCorrente=autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
 		return "/faces/autore.jsf";
 	}
-	public String getAutore(String nome){
-		try{
-			autoreCorrente=autoreService.getAutore(nomeAutore);		
-			attributiSessione.put("autoreTemp", autoreCorrente);
+	public String getAutore(){				
+			attributiSessione.put("nomeTemp", nomeAutore);
 			return "/faces/autoreQuadri.jsf";			
-				}
-		catch (Exception e){
-			return "/faces/autoreQuadri.jsf";
-		}
 	}
-	public List<Quadro> listaQuadri(Long id){
-		return autoreService.getListaQuadri(id);
+	public List<Quadro> listaQuadri(String nome){
+		return autoreService.getListaQuadri(nome);
 	}
 	public String visualizzaAutore(Long id){
 		autoreCorrente=autoreService.ottieniAutore(id);

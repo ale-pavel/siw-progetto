@@ -43,14 +43,8 @@ public class AutoreService {
 		em.merge(autoreTemp);
 	}
 
-	public Autore getAutore(String cognome) {
-		TypedQuery<Autore> query=em.createQuery("Select a From Autore a Where a.cognome='"+cognome+"'" ,Autore.class);
-		List<Autore> autori=query.getResultList();	
-		return autori.get(0);
-	}
-
-	public List<Quadro> getListaQuadri(Long id) {
-		TypedQuery<Quadro> query=em.createQuery("Select q From Quadro q Where  q.autore.id="+id+"" ,Quadro.class);
+	public List<Quadro> getListaQuadri(String nome) {
+		TypedQuery<Quadro> query=em.createQuery("Select q From Quadro q Where  q.autore.cognome like '%"+nome+"%' or q.autore.nome like '%"+nome+"%'" ,Quadro.class);
 		return query.getResultList();
 	}
 	

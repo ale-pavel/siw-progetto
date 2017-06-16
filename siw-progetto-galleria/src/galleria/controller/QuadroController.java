@@ -25,6 +25,7 @@ public class QuadroController{
 	private Part imgFile;
 	private byte[] imgFileByte;
 	private Quadro quadroCorrente;
+	private String nomeQuadro;
 	@EJB(beanName="quadroService")
 	private QuadroService quadroService;
 	private Map<String,Object> attributiSessione = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -75,12 +76,26 @@ public class QuadroController{
 		return "/protetto/gestioneQuadri.jsf";
 	}
 
-	public List<Quadro> listaQuadri() {
-		return quadroService.listaQuadri();
+	public List<Quadro> listaQuadri(String nome) {
+		if(nome.equals("")||nome==null) 
+			return quadroService.listaQuadri();
+		else 
+			return quadroService.listaQuadriNome(nome);
 	}
-
+	public String getQuadri(){
+		attributiSessione.put("nomeQuadro", nomeQuadro);
+		return "/faces/listaQuadri.jsf";
+	}
 	public Part getImgFile() {
 		return imgFile;
+	}
+
+	public String getNomeQuadro() {
+		return nomeQuadro;
+	}
+
+	public void setNomeQuadro(String nomeQuadro) {
+		this.nomeQuadro = nomeQuadro;
 	}
 
 	public void setImgFile(Part imgFile) {

@@ -21,11 +21,15 @@
 	<ui:include src="/resources/html/navBar.xhtml" />
 	<div class="container">	
 		<h:form>
-		<h:inputText id="nomeAutore" value="#{autoreController.nomeAutore}" required="true"/>
-		<h:commandButton value="Submit" action="#{autoreController.getAutore(autoreController.nomeAutore)}" />
+		Ricerca Autore: <h:inputText id="nomeAutore" value="#{autoreController.nomeAutore}" required="true"/>
+		<h:commandButton value="Submit" action="#{autoreController.getAutore()}" />
+		</h:form>
+		<h:form>
+		Ricerca Quadro: <h:inputText id="nomeQuadro" value="#{quadroController.nomeQuadro}" required="true"/>
+		<h:commandButton value="Submit" action="#{quadroController.getQuadri()}" />
 		</h:form>
 			<div class="list-group">
-				<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
+				<ui:repeat var="quadro" value="#{quadroController.listaQuadri(quadroController.nomeQuadro)}">
 					<div class="col-sm-12">
 						<div class="col-sm-4">
 						<ul class="list-group">
