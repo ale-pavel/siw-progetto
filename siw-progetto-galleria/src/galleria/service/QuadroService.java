@@ -40,9 +40,14 @@ public class QuadroService {
 		em.merge(quadroTemp);
 	}
 
-	public List<Quadro> listaQuadriNome(String nome) {
+	public List<Quadro> queryQuadriNome(String nome) {
 		TypedQuery<Quadro> query = em.createQuery("SELECT a FROM Quadro a WHERE a.titolo like '%"+nome+"%'",Quadro.class);
 		return query.getResultList();
 	}
 
+	public List<Quadro> queryQuadriAutore(String nome) {
+		TypedQuery<Quadro> query=em.createQuery("Select q From Quadro q Where q.autore.cognome like '%"+nome+"%' or q.autore.nome like '%"+nome+"%'" ,Quadro.class);
+		return query.getResultList();
+	}
+	
 }

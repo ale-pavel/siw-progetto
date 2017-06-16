@@ -43,9 +43,4 @@ public class AutoreService {
 		em.merge(autoreTemp);
 	}
 
-	public List<Quadro> getListaQuadri(String nome) {
-		TypedQuery<Quadro> query=em.createQuery("Select q From Quadro q Where  q.autore.cognome like '%"+nome+"%' or q.autore.nome like '%"+nome+"%'" ,Quadro.class);
-		return query.getResultList();
-	}
-	
 }

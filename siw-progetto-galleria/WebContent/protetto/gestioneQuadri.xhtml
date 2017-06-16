@@ -5,10 +5,6 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<style>
-		.img{height:70%;width:100%;top:5%}
-		.featurette-divider{color:white;}
-	</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputScript name="js/jquery.min.js" />
@@ -17,11 +13,9 @@
 </h:head>
 <h:body>
 	<f:view>
-	<ui:include src="/resources/html/navBar.xhtml" />
-	<div class="container">	
-		
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container">	
 			<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
-
 				<div class="col-sm-12">
 				<div class="col-sm-4"><ul class="list-group">
 					<li class="list-group-item">#{quadro.titolo}</li>
@@ -30,21 +24,19 @@
 					<li class="list-group-item">#{quadro.dimensioni}</li>
 					<li class="list-group-item">#{quadro.autore.nome} #{quadro.autore.cognome}</li>
 					<li class="list-group-item">
-					<h:form>
-						<h:commandButton styleClass="btn btn-danger" value="Cancella" 
-							action="#{quadroController.rimuoviQuadro(quadro.id)}" />
-						<h:commandButton styleClass="btn btn-primary" value="Modifica"
-							action="#{quadroController.predisponiModificaQuadro(quadro.id)}" />
-					</h:form>
+						<h:form>
+							<h:commandButton styleClass="btn btn-danger" value="Cancella" 
+								action="#{quadroController.rimuoviQuadro(quadro.id)}" />
+							<h:commandButton styleClass="btn btn-primary" value="Modifica"
+								action="#{quadroController.predisponiModificaQuadro(quadro.id)}" />
+						</h:form>
 					</li>
 				</ul></div>
 				<div class="col-sm-8">
 					<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true" />
 				</div>
 				</div>
-
 			</ui:repeat>
-
 		</div>
 	</f:view>
 </h:body>

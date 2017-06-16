@@ -76,26 +76,20 @@ public class QuadroController{
 		return "/protetto/gestioneQuadri.jsf";
 	}
 
-	public List<Quadro> listaQuadri(String nome) {
-		if(nome.equals("")||nome==null) 
-			return quadroService.listaQuadri();
-		else 
-			return quadroService.listaQuadriNome(nome);
+	public List<Quadro> listaQuadri() {
+		return quadroService.listaQuadri();
 	}
-	public String getQuadri(){
-		attributiSessione.put("nomeQuadro", nomeQuadro);
-		return "/faces/listaQuadri.jsf";
-	}
-	public Part getImgFile() {
-		return imgFile;
-	}
-
+	
 	public String getNomeQuadro() {
 		return nomeQuadro;
 	}
 
 	public void setNomeQuadro(String nomeQuadro) {
 		this.nomeQuadro = nomeQuadro;
+	}
+	
+	public Part getImgFile() {
+		return imgFile;
 	}
 
 	public void setImgFile(Part imgFile) {

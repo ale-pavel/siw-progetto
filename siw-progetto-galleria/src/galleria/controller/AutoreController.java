@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import galleria.model.Autore;
-import galleria.model.Quadro;
 import galleria.service.AutoreService;
 
 @ManagedBean(name="autoreController")
@@ -29,17 +28,12 @@ public class AutoreController {
 		autoreCorrente=autoreService.inserisciAutore(nome,cognome,nazionalita,dataNascita,dataMorte);
 		return "/faces/autore.jsf";
 	}
-	public String getAutore(){				
-			attributiSessione.put("nomeTemp", nomeAutore);
-			return "/faces/autoreQuadri.jsf";			
-	}
-	public List<Quadro> listaQuadri(String nome){
-		return autoreService.getListaQuadri(nome);
-	}
+	
 	public String visualizzaAutore(Long id){
 		autoreCorrente=autoreService.ottieniAutore(id);
 		return "/faces/autore.jsf";
 	}
+	
 	public String rimuoviAutore(Long id) {
 		autoreService.rimuoviAutore(id);
 		return "/protetto/gestioneAutori.jsf";
@@ -57,6 +51,14 @@ public class AutoreController {
 		return "/protetto/gestioneAutori.jsf";
 	}
 	
+	public String getNomeAutore() {
+		return nomeAutore;
+	}
+	
+	public void setNomeAutore(String nomeAutore) {
+		this.nomeAutore = nomeAutore;
+	}
+	
 	public List<Autore> listaAutori() {
 		return autoreService.listaAutori();
 	}
@@ -64,13 +66,7 @@ public class AutoreController {
 	public AutoreService getAutoreService() {
 		return autoreService;
 	}
-	
-	public String getNomeAutore() {
-		return nomeAutore;
-	}
-	public void setNomeAutore(String nomeAutore) {
-		this.nomeAutore = nomeAutore;
-	}
+
 	public void setAutoreService(AutoreService autoreService) {
 		this.autoreService = autoreService;
 	}

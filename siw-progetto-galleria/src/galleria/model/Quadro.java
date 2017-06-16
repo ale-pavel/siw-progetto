@@ -19,7 +19,6 @@ public class Quadro {
 	private String dimensioni;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Autore autore;
-	//Il file di immagine caricato dopo essere stato convertito da Part a byte[] dentro ControllerQuadro
 	private byte[] imgFile;
 	
 	public Quadro() {}

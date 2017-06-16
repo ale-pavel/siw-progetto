@@ -13,10 +13,8 @@
 </h:head>
 <h:body>
 	<f:view>
-	<ui:include src="/resources/html/navBar.xhtml" />	
-	<div class="container">
-		
-		
+		<ui:include src="/resources/html/navBar.xhtml" />	
+		<div class="container">
 			<h:form enctype="multipart/form-data">
 				<div class="col-sm-4">
 					<div>Titolo:
@@ -45,7 +43,8 @@
 				<div class="col-sm-8">
 					<div>Immagine:
 						<o:graphicImage value="#{quadroTemp.imgFile}" dataURI="true" />
-						<o:inputFile value="#{quadroController.imgFile}" accept="image/*"/></div>
+						<o:inputFile value="#{quadroController.imgFile}" accept="image/*"/>
+					</div>
 				</div>
 			</h:form>
 		</div>
