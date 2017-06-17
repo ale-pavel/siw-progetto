@@ -15,12 +15,30 @@
 	<f:view>	
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
-			<div>Titolo:#{quadroController.quadroCorrente.titolo}</div>
-			<div>Anno:#{quadroController.quadroCorrente.anno}</div>
-			<div>Dimensioni:#{quadroController.quadroCorrente.dimensioni}</div>
-			<div>Tecnica:#{quadroController.quadroCorrente.tecnica}</div>
-			<div>Autore:#{quadroController.quadroCorrente.autore.nome} #{quadroController.quadroCorrente.autore.cognome}</div>
-			<div>Immagine:<o:graphicImage value="#{quadroController.quadroCorrente.imgFile}" dataURI="true" /></div>
+		<table class="table">
+				<thead>
+			    	<tr>
+				      	<th>Titolo</th>
+				        <th>Anno</th>
+				        <th>Dimensioni</th>
+				        <th>Tecnica</th>
+				        <th>Autore</th>
+				        
+			    	</tr>
+			    </thead>
+				
+				    <tbody>
+				    	<tr>
+			<td>#{quadroController.quadroCorrente.titolo}</td>
+			<td>#{quadroController.quadroCorrente.anno}</td>
+			<td>#{quadroController.quadroCorrente.dimensioni}</td>
+			<td>#{quadroController.quadroCorrente.tecnica}</td>
+			<td>#{quadroController.quadroCorrente.autore.nome} #{quadroController.quadroCorrente.autore.cognome}</td>
+			
+			</tr>
+			<tr> <o:graphicImage value="#{quadroController.quadroCorrente.imgFile}" dataURI="true" /></tr>
+			</tbody>
+			</table>		
 		</div>
 	</f:view>
 </h:body>

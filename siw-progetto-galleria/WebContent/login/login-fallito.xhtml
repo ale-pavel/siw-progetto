@@ -9,19 +9,25 @@
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Login Amministratore</title>
+	<style>
+	.col-sm-4{:absolute;left:35%;top:5%}
+	</style>
 </h:head>
 <h:body>
-	<f:view>
+	<f:view class="form-signin">
 		<div class="container">
-			<h1>Effettuare il login</h1>
+		<div class="col-sm-4">
+			<h2 class="form-signin-heading">Effettuare il login</h2>
 			<p>Le informazioni inserite non sono corrette, provare di nuovo.</p>
 			<form id="loginProtetto" action="j_security_check" method="post">
 				<h:outputLabel for="j_username" value="Nome Utente:" />
-				<h:inputText id="j_username" size="20" style="display:block" /> 
+				<h:inputText id="j_username" class="form-control" size="20" style="display:block" /> 
 				<h:outputLabel for="j_passowrd" value="Password:" />
-				<h:inputSecret id="j_password" size="20" style="display:block" />
-				<h:commandButton value="Login" id="submit" />
+				<h:inputSecret id="j_password" class="form-control" size="20" style="display:block" />
+				<BR />
+				<h:commandButton class="btn btn-lg btn-primary btn-block" value="Login" id="submit" />
 			</form>
+			</div>
 		</div>
 	</f:view>
 </h:body>
