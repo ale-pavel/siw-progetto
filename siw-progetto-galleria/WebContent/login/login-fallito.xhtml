@@ -9,14 +9,17 @@
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Login Amministratore</title>
-	<style>
-	.col-sm-4{:absolute;left:35%;top:5%}
-	</style>
+	<link rel="apple-touch-icon" sizes="144x144" href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png"/>
+	<link rel="icon" type="image/png" sizes="16x16" href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png"/>
+	<link rel="manifest" href="/siw-progetto-galleria/resources/favicons/manifest.json"/>
+	<link rel="mask-icon" href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+	<meta name="theme-color" content="#ffffff" />
 </h:head>
 <h:body>
 	<f:view class="form-signin">
-		<div class="container">
-		<div class="col-sm-4">
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container" style="width:40%;padding:20px;">
 			<h2 class="form-signin-heading">Effettuare il login</h2>
 			<p>Le informazioni inserite non sono corrette, provare di nuovo.</p>
 			<form id="loginProtetto" action="j_security_check" method="post">
@@ -27,7 +30,6 @@
 				<BR />
 				<h:commandButton class="btn btn-lg btn-primary btn-block" value="Login" id="submit" />
 			</form>
-			</div>
 		</div>
 	</f:view>
 </h:body>
