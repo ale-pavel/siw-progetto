@@ -15,17 +15,29 @@
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
 			<h:form>
-				<div>Nome:<h:inputText id="nome" value="#{autoreController.nome}" required="true"/>
-					<h:message for="nome" errorClass="errorMessage" /></div>
-				<div>Cognome: <h:inputText id="cognome" value="#{autoreController.cognome}" required="true" />
-					<h:message for="cognome" errorClass="errorMessage" /></div>
-				<div>Nazionalita: <h:inputText id="nazionalita" value="#{autoreController.nazionalita}" required="true" />
-					<h:message for="nazionalita" errorClass="errorMessage" /></div>
-				<div>Data di nascita: <h:inputText id="dataNascita" value="#{autoreController.dataNascita}" required="true" >
-					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText><h:message for="dataNascita" errorClass="errorMessage" /></div>
-				<div>Data di morte: <h:inputText id="dataMorte" value="#{autoreController.dataMorte}" required="true" >
-					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText><h:message for="dataMorte" errorClass="errorMessage" /></div>
-				<div><h:commandButton value="Submit" action="#{autoreController.inserisciAutore}" /></div>
+				<div class="form-group col-sm-12">
+				<label class="col-sm-2 control-label">Nome:</label>
+				<div class="col-sm-8"><h:inputText class="form-control" id="nome" value="#{autoreController.nome}" required="true"/></div>
+					<div class="col-sm-2"><h:message for="nome" errorClass="errorMessage" /></div></div>
+				<div class="form-group col-sm-12">
+				<label class="col-sm-2 control-label">Cognome:</label>
+				 <div class="col-sm-8"><h:inputText class="form-control" id="cognome" value="#{autoreController.cognome}" required="true" /></div>
+					<div class="col-sm-2"><h:message for="cognome" errorClass="errorMessage" /></div></div>
+				<div class="form-group col-sm-12">
+				<label class="col-sm-2 control-label">Nazionalita:</label>
+				 <div class="col-sm-8"><h:inputText class="form-control" id="nazionalita" value="#{autoreController.nazionalita}" required="true" /></div>
+					<div class="col-sm-2"><h:message for="nazionalita" errorClass="errorMessage" /></div></div>
+				<div class="form-group col-sm-12">
+				<label class="col-sm-2 control-label">Data di nascita: </label>
+				<div class="col-sm-8"><h:inputText class="form-control" id="dataNascita" value="#{autoreController.dataNascita}" required="true" >
+					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
+					<div class="col-sm-2"><h:message for="dataNascita" errorClass="errorMessage" /></div></div>
+				<div class="form-group col-sm-12">
+				<label class="col-sm-2 control-label">Data di morte: </label>
+				<div class="col-sm-8"><h:inputText class="form-control" id="dataMorte" value="#{autoreController.dataMorte}" required="true" >
+					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
+					<div class="col-sm-2"><h:message for="dataMorte" errorClass="errorMessage" /></div></div>
+				<div class="form-group col-sm-12"><h:commandButton value="Submit" class="btn btn-primary" action="#{autoreController.inserisciAutore}" /></div>
 			</h:form>
 		</div>
 	</f:view>

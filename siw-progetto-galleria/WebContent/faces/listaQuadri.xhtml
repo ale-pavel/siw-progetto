@@ -13,47 +13,68 @@
 	<style>
 		.list-group-item {margin-right:10px}
 		a.btn {margin-right:10px}
+		.img{height:10%;width:80%}
 	</style>
 </h:head>
 <h:body>
 	<f:view>
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">	
+		<div class="col-sm-8">
 			<h:form>
-				Ricerca per Autore: <h:inputText id="autoreCercato" value="#{queryController.autoreCercato}" required="true"/>
-				<h:commandButton value="Submit" action="#{queryController.listaQuadriQuery()}" />
+				Ricerca per Autore: <h:inputText class="form-control" id="autoreCercato" value="#{queryController.autoreCercato}" required="true"/>
+				<h:commandButton class="btn btn-lg btn-default"  value="Cerca" action="#{queryController.listaQuadriQuery()}" />
 			</h:form>
+			<BR />
 			<h:form>
-				Ricerca Quadro: <h:inputText id="quadroCercato" value="#{queryController.quadroCercato}" required="true"/>
-				<h:commandButton value="Submit" action="#{queryController.listaQuadriQuery()}" />
+				Ricerca Quadro: <h:inputText class="form-control" id="quadroCercato" value="#{queryController.quadroCercato}" required="true"/>
+				<h:commandButton class="btn btn-lg btn-default" value="Cerca" action="#{queryController.listaQuadriQuery()}" />
 			</h:form>
+
+			</div>
+			
 			<div class="list-group">
+			
 				<ui:repeat var="quadro" value="#{queryController.listaQuadriQuery()}">
+				
 					<div class="col-sm-12">
-						<div class="col-sm-4">
-						<ul class="list-group">
-							<li class="list-group-item"><h:form>
+					<BR />
+					<BR />
+					<BR />
+					
+					<div class="col-sm-6">
+					
+						<div class="table-responsive">
+						<table class="table">
+							<tr><td><h:form>
 		   						Titolo: <h:commandLink value="#{quadro.titolo}" 
 		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
 							</h:form>
-							</li>
-							<li class="list-group-item">Anno: #{quadro.anno}</li>
-							<li class="list-group-item">Tecnica: #{quadro.tecnica}</li>
-							<li class="list-group-item">Dimensioni: #{quadro.dimensioni}</li>
-							<li class="list-group-item">
+							</td></tr>
+							<tr><td>Anno: #{quadro.anno}</td></tr>
+							<tr><td>Tecnica: #{quadro.tecnica}</td></tr>
+							<tr><td>Dimensioni: #{quadro.dimensioni}</td></tr>
+							<tr>
+							<td>
 								<h:form>
 									Autore:<h:commandLink value="#{quadro.autore.nome} #{quadro.autore.cognome}" 
 				   							action="#{autoreController.visualizzaAutore(quadro.autore.id)}" />
 			   					</h:form>
-			   				</li>
-						</ul>
+			   				</td></tr>
+			   				<tr><td></td></tr>
+						</table>
 						</div>
-						<div class="col-sm-8">
+						</div>
+						
+					
+						<div class="col-sm-6">
 							<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true"/>
 						</div>					
+					
 					</div>
+					
 				</ui:repeat>
-				<h:link value="Homepage" outcome="/index.jsf" styleClass="btn btn-primary" />
+				
 			</div>
 		</div>
 	</f:view>

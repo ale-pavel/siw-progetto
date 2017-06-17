@@ -10,6 +10,9 @@
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Gestione Quadri</title>
+	<style>
+	.img{height:10%;width:80%}
+	</style>
 </h:head>
 <h:body>
 	<f:view>
@@ -17,22 +20,26 @@
 		<div class="container">	
 			<ui:repeat var="quadro" value="#{quadroController.listaQuadri()}">
 				<div class="col-sm-12">
-				<div class="col-sm-4"><ul class="list-group">
-					<li class="list-group-item">#{quadro.titolo}</li>
-					<li class="list-group-item">#{quadro.anno}</li>
-					<li class="list-group-item">#{quadro.tecnica}</li>
-					<li class="list-group-item">#{quadro.dimensioni}</li>
-					<li class="list-group-item">#{quadro.autore.nome} #{quadro.autore.cognome}</li>
-					<li class="list-group-item">
+				<BR />
+					<BR />
+					<BR />
+				<div class="col-sm-6"><div class="table-responsive">
+						<table class="table">
+					<tr><td>#{quadro.titolo}</td></tr>
+					<tr><td>#{quadro.anno}</td></tr>
+					<tr><td>#{quadro.tecnica}</td></tr>
+					<tr><td>#{quadro.dimensioni}</td></tr>
+					<tr><td>#{quadro.autore.nome} #{quadro.autore.cognome}</td></tr>
+					<tr><td>
 						<h:form>
 							<h:commandButton styleClass="btn btn-danger" value="Cancella" 
 								action="#{quadroController.rimuoviQuadro(quadro.id)}" />
 							<h:commandButton styleClass="btn btn-primary" value="Modifica"
 								action="#{quadroController.predisponiModificaQuadro(quadro.id)}" />
 						</h:form>
-					</li>
-				</ul></div>
-				<div class="col-sm-8">
+					</td></tr>
+				</table></div></div>
+				<div class="col-sm-6">
 					<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true" />
 				</div>
 				</div>
