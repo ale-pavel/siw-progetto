@@ -6,32 +6,34 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/custom.css" />
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
+	<h:outputScript name="js/custom.js" />
 	<title>Barra di Navigazione</title>
 </h:head>
 <h:body>
 	<f:view>
-		<nav id="navMenu" class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Galleria</a>
+		<nav id="navMenu" class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand navtext" href="#">Galleria d'Arte</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navtext">
+						<li><h:link value="Home" outcome="/index.jsf" /></li>
+						<li><h:link value="Quadri" outcome="/faces/listaQuadri.jsf" /></li>
+						<li><h:link value="Inserimento Quadro" outcome="/protetto/inserimentoQuadro.jsf" /></li>
+						<li><h:link value="Inserimento Autore" outcome="/protetto/inserimentoAutore.jsf" /></li>
+						<li><h:link value="Gestione Autori" outcome="/protetto/gestioneAutori.jsf" /></li>
+						<li><h:link value="Gestione Quadri" outcome="/protetto/gestioneQuadri.jsf" /></li>
+						<li><h:link value="Contact" outcome="/index.jsf" /></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right navtext">
+						<li><h:link value="Admin" outcome="/faces/indexAdmin.jsf" /></li>
+					</ul>
+				</div>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><h:link value="Home" outcome="/index.jsf" /></li>
-					<li><h:link value="Quadri" outcome="/faces/listaQuadri.jsf" /></li>
-					<li><h:link value="Inserimento Quadro" outcome="/protetto/inserimentoQuadro.jsf" /></li>
-					<li><h:link value="Inserimento Autore" outcome="/protetto/inserimentoAutore.jsf" /></li>
-					<li><h:link value="Gestione Autori" outcome="/protetto/gestioneAutori.jsf" /></li>
-					<li><h:link value="Gestione Quadri" outcome="/protetto/gestioneQuadri.jsf" /></li>
-					<li><h:link value="Contact" outcome="/index.jsf" /></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><h:link value="Admin" outcome="/faces/indexAdmin.jsf" /></li>
-				</ul>
-			</div>
-		</div>
 		</nav>
 	</f:view>
 </h:body>
