@@ -19,16 +19,22 @@
 <h:body>
 	<f:view class="form-signin">
 		<ui:include src="/resources/html/navBar.xhtml" />
-		<div class="container" style="width:40%;padding:20px;">
+		<div class="container" style="width:40%;padding:30px;">
 			<h2 class="form-signin-heading">Effettuare il login</h2>
 			<p>Le informazioni inserite non sono corrette, provare di nuovo.</p>
 			<form id="loginProtetto" action="j_security_check" method="post">
 				<h:outputLabel for="j_username" value="Nome Utente:" />
-				<h:inputText id="j_username" class="form-control" size="20" style="display:block" /> 
+				<div class="input-group">
+					<span class="input-group-addon btn-custom-brown glyphicon glyphicon-user"></span>
+					<h:inputText id="j_username" styleClass="form-control" size="20" /> 
+				</div>
 				<h:outputLabel for="j_passowrd" value="Password:" />
-				<h:inputSecret id="j_password" class="form-control" size="20" style="display:block" />
+				<div class="input-group">
+					<span class="input-group-addon btn-custom-brown glyphicon glyphicon-lock"></span>
+					<h:inputSecret id="j_password" styleClass="form-control" size="20" />
+				</div>	
 				<BR />
-				<h:commandButton class="btn btn-lg btn-primary btn-block" value="Login" id="submit" />
+				<h:commandButton styleClass="btn btn-lg btn-custom-brown btn-block" value="Login" id="submit" />
 			</form>
 		</div>
 	</f:view>

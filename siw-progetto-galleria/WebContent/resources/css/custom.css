@@ -44,3 +44,39 @@ nav.navbar.shrink {
 	-webkit-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 }
+
+.input-group-btn:first-child {
+    border-right: 0;
+    position: relative;
+    top: 0.3px;
+}
+
+.glyphicon {
+	top:0px;
+}
+
+h2.form-signin-heading {
+	margin-top:0px;
+}
+
+.btn-custom-brown {
+	background-color:#603f20;
+	border-color:#442d16;
+	color:#e5c89a;
+}
+
+.btn-custom-brown.glyphicon {
+	color:#e5c89a;
+}
+
+.btn-custom-brown:hover {
+	background-color:#442d16;
+	border-color:#2d1e0e;
+	color:#ffffff;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/siw-progetto-galleria/resources/fonts/glyphicons-halflings-regular.eot');
+  src: url('/siw-progetto-galleria/resources/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/siw-progetto-galleria/resources/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/siw-progetto-galleria/resources/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/siw-progetto-galleria/resources/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
