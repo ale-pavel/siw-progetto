@@ -2,18 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Inserimento Autore</title>
-	<link rel="apple-touch-icon" sizes="144x144" href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png"/>
-	<link rel="icon" type="image/png" sizes="32x32" href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png"/>
-	<link rel="icon" type="image/png" sizes="16x16" href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png"/>
-	<link rel="manifest" href="/siw-progetto-galleria/resources/favicons/manifest.json"/>
-	<link rel="mask-icon" href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png" />
+	<link rel="manifest"
+		href="/siw-progetto-galleria/resources/favicons/manifest.json" />
+	<link rel="mask-icon"
+		href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg"
+		color="#5bbad5" />
 	<meta name="theme-color" content="#ffffff" />
 </h:head>
 <h:body>
@@ -21,29 +28,86 @@
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
 			<h:form>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Nome:</label>
-				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="nome" value="#{autoreController.nome}" required="true"/></div>
-					<div class="col-sm-2"><h:message for="nome" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Cognome:</label>
-				 <div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="cognome" value="#{autoreController.cognome}" required="true" /></div>
-					<div class="col-sm-2"><h:message for="cognome" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Nazionalita:</label>
-				 <div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="nazionalita" value="#{autoreController.nazionalita}" required="true" /></div>
-					<div class="col-sm-2"><h:message for="nazionalita" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Data di nascita: </label>
-				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="dataNascita" value="#{autoreController.dataNascita}" required="true" >
-					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
-					<div class="col-sm-2"><h:message for="dataNascita" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Data di morte: </label>
-				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="dataMorte" value="#{autoreController.dataMorte}" required="true" >
-					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
-					<div class="col-sm-2"><h:message for="dataMorte" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12"><h:commandButton value="Submit" class="btn btn-primary" action="#{autoreController.inserisciAutore}" /></div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Nome*</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="nome"
+								value="#{autoreController.nome}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="nome" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Cognome*</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="cognome"
+								value="#{autoreController.cognome}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="cognome" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Nazionalita'</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="nazionalita"
+								value="#{autoreController.nazionalita}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="nazionalita" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Data di Nascita</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText a:placeholder="31-12-2000" styleClass="form-control" id="dataNascita"
+								value="#{autoreController.dataNascita}">
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+							</h:inputText>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dataNascita" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Data di Morte</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText a:placeholder="31-12-2000" styleClass="form-control" id="dataMorte"
+								value="#{autoreController.dataMorte}">
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+							</h:inputText>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dataMorte" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<h:commandButton value="Submit" styleClass="btn btn-custom-brown"
+							action="#{autoreController.inserisciAutore}" />
+					</div>
+				</div>
 			</h:form>
 		</div>
 	</f:view>

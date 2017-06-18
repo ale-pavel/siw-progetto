@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:h="http://java.sun.com/jsf/html" 
-	xmlns:f="http://java.sun.com/jsf/core" 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
@@ -10,11 +10,17 @@
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Inserimento Quadro</title>
-	<link rel="apple-touch-icon" sizes="144x144" href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png"/>
-	<link rel="icon" type="image/png" sizes="32x32" href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png"/>
-	<link rel="icon" type="image/png" sizes="16x16" href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png"/>
-	<link rel="manifest" href="/siw-progetto-galleria/resources/favicons/manifest.json"/>
-	<link rel="mask-icon" href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png" />
+	<link rel="manifest"
+		href="/siw-progetto-galleria/resources/favicons/manifest.json" />
+	<link rel="mask-icon"
+		href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg"
+		color="#5bbad5" />
 	<meta name="theme-color" content="#ffffff" />
 </h:head>
 <h:body>
@@ -22,32 +28,83 @@
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
 			<h:form enctype="multipart/form-data">
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Titolo:</label>
-				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="titolo" value="#{quadroController.titolo}" required="true"/></div>
-					<div class="col-sm-2"><h:message for="titolo" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Anno:</label>
-					<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="anno" value="#{quadroController.anno}" /></div>
-					<div class="col-sm-2"><h:message for="anno" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Dimensioni:</label>
-					<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="dimensioni" value="#{quadroController.dimensioni}" /></div>
-					<div class="col-sm-2"><h:message for="dimensioni" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Tecnica:</label>
-					<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="tecnica" value="#{quadroController.tecnica}" /></div>
-					<div class="col-sm-2"><h:message for="tecnica" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12">
-				<label class="col-sm-2 control-label">Autore:</label>
-					<div class="col-sm-8"><h:selectOneMenu id="idAutore" style="background-color:transparent" value="#{quadroController.idAutore}" required="true">
-					   	<f:selectItem itemValue="" itemLabel="Selezionare l'autore" />
-					   	<f:selectItems  var="autore" value="#{autoreController.listaAutori()}"
-					   		itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}" />
-					</h:selectOneMenu></div>
-					<div class="col-sm-2"><h:message for="idAutore" errorClass="errorMessage" /></div></div>
-				<div class="form-group col-sm-12"><o:inputFile value="#{quadroController.imgFile}" accept="image/*"/></div>
-				<div class="form-group col-sm-12"><h:commandButton styleClass="btn btn-primary" value="Submit" action="#{quadroController.inserisciQuadro}" /></div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Titolo*</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="titolo"
+								value="#{quadroController.titolo}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="titolo" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Anno</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="anno"
+								value="#{quadroController.anno}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="anno" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Dimensioni</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="dimensioni"
+								value="#{quadroController.dimensioni}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dimensioni" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Tecnica</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="tecnica"
+								value="#{quadroController.tecnica}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="tecnica" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Autore*</label>
+						<div class="col-sm-8">
+							<h:selectOneMenu id="idAutore" styleClass="form-control"
+								value="#{quadroController.idAutore}" required="true">
+								<f:selectItem itemValue="" itemLabel="Selezionare l'autore" />
+								<f:selectItems var="autore"
+									value="#{autoreController.listaAutori()}"
+									itemValue="#{autore.id}"
+									itemLabel="#{autore.nome} #{autore.cognome}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="idAutore" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<o:inputFile value="#{quadroController.imgFile}" accept="image/*" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<h:commandButton styleClass="btn btn-custom-brown" value="Submit"
+							action="#{quadroController.inserisciQuadro}" />
+					</div>
+				</div>
 			</h:form>
 		</div>
 	</f:view>

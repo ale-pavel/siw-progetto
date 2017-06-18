@@ -1,90 +1,129 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:o="http://omnifaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Galleria Quadri</title>
-	<link rel="apple-touch-icon" sizes="144x144" href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png"/>
-	<link rel="icon" type="image/png" sizes="32x32" href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png"/>
-	<link rel="icon" type="image/png" sizes="16x16" href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png"/>
-	<link rel="manifest" href="/siw-progetto-galleria/resources/favicons/manifest.json"/>
-	<link rel="mask-icon" href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png" />
+	<link rel="manifest"
+		href="/siw-progetto-galleria/resources/favicons/manifest.json" />
+	<link rel="mask-icon"
+		href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg"
+		color="#5bbad5" />
 	<meta name="theme-color" content="#ffffff" />
 	<style>
-		.list-group-item {margin-right:10px}
-		a.btn {margin-right:10px}
-		.img{height:10%;width:80%}
-	</style>
+.list-group-item {
+	margin-right: 10px
+}
+
+a.btn {
+	margin-right: 10px
+}
+
+.img {
+	height: 10%;
+	width: 80%
+}
+</style>
 </h:head>
 <h:body>
 	<f:view>
 		<ui:include src="/resources/html/navBar.xhtml" />
-		<div class="container">	
-		<div class="col-sm-8">
+		<div class="container" style="width:75%;padding:30px;">
 			<h:form>
-				Ricerca per Autore: <h:inputText class="form-control" style="background-color:transparent" id="autoreCercato" value="#{queryController.autoreCercato}" required="true"/>
-				<h:commandButton class="btn btn-lg btn-default"  value="Cerca" action="#{queryController.listaQuadriQuery()}" />
-			</h:form>
-			<BR />
-			<h:form>
-				Ricerca Quadro: <h:inputText class="form-control" style="background-color:transparent" id="quadroCercato" value="#{queryController.quadroCercato}" required="true"/>
-				<h:commandButton class="btn btn-lg btn-default" value="Cerca" action="#{queryController.listaQuadriQuery()}" />
-			</h:form>
-
-			</div>
-			
-			<div class="list-group">
-			
-				<ui:repeat var="quadro" value="#{queryController.listaQuadriQuery()}">
-				
-					<div class="col-sm-12">
-					<BR />
-					<BR />
-					<BR />
-					
-					<div class="col-sm-6">
-					
-						<div class="table-responsive">
-						<table class="table">
-							<tr><td><h:form>
-		   						Titolo: <h:commandLink value="#{quadro.titolo}" 
-		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
-							</h:form>
-							</td></tr>
-							<tr><td>Anno: #{quadro.anno}</td></tr>
-							<tr><td>Tecnica: #{quadro.tecnica}</td></tr>
-							<tr><td>Dimensioni: #{quadro.dimensioni}</td></tr>
-							<tr>
-							<td>
-								<h:form>
-									Autore:<h:commandLink value="#{quadro.autore.nome} #{quadro.autore.cognome}" 
-				   							action="#{autoreController.visualizzaAutore(quadro.autore.id)}" />
-			   					</h:form>
-			   				</td></tr>
-			   				<tr><td></td></tr>
-						</table>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<h:inputText a:placeholder="Nome o Cognome dell'autore del quadro"
+									styleClass="form-control input-lg" id="autoreCercato"
+									value="#{queryController.autoreCercato}" required="true" />
+								<span class="input-group-btn">
+									<button id="filter" class="btn btn-lg btn-custom-brown glyphicon glyphicon-search" 
+										onclick="#{queryController.listaQuadriQuery()}">
+									</button>
+								</span>
+							</div>
 						</div>
-						</div>
-						
-					
-						<div class="col-sm-6">
-						<h:form><h:commandLink 
-		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}">
-							<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true"/>
-							</h:commandLink>
-		   							</h:form>
-						</div>					
-					
 					</div>
-					
+				</div>
+			</h:form>
+			<h:form>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<h:inputText a:placeholder="Titolo del quadro" styleClass="form-control input-lg" id="quadroCercato"
+									value="#{queryController.quadroCercato}" required="true" />
+								<span class="input-group-btn">
+									<button id="filter" class="btn btn-lg btn-custom-brown glyphicon glyphicon-search" 
+										onclick="#{queryController.listaQuadriQuery()}">
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+			<div class="list-group">
+				<ui:repeat var="quadro"
+					value="#{queryController.listaQuadriQuery()}">
+					<div class="col-sm-12">
+						<BR /> <BR />
+						<div class="col-sm-6">
+							<div class="table-responsive">
+								<table class="table">
+									<tr>
+										<td><h:form>
+		   						Titolo: <h:commandLink value="#{quadro.titolo}"
+													action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" />
+											</h:form></td>
+									</tr>
+									<tr>
+										<td>Anno: #{quadro.anno}</td>
+									</tr>
+									<tr>
+										<td>Tecnica: #{quadro.tecnica}</td>
+									</tr>
+									<tr>
+										<td>Dimensioni: #{quadro.dimensioni}</td>
+									</tr>
+									<tr>
+										<td><h:form>
+									Autore:<h:commandLink
+													value="#{quadro.autore.nome} #{quadro.autore.cognome}"
+													action="#{autoreController.visualizzaAutore(quadro.autore.id)}" />
+											</h:form></td>
+									</tr>
+									<tr>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<h:form>
+								<h:commandLink
+									action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}">
+									<o:graphicImage class="img" value="#{quadro.imgFile}"
+										dataURI="true" />
+								</h:commandLink>
+							</h:form>
+						</div>
+					</div>
 				</ui:repeat>
-				
 			</div>
 		</div>
 	</f:view>
