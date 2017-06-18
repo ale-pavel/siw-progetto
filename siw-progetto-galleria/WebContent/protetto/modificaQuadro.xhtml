@@ -19,38 +19,90 @@
 </h:head>
 <h:body>
 	<f:view>
-		<ui:include src="/resources/html/navBar.xhtml" />	
+		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
 			<h:form enctype="multipart/form-data">
-				<div class="col-sm-4">
-					<div>Titolo:
-						<h:inputText id="titolo" value="#{quadroTemp.titolo}" required="true" />
-						<h:message for="titolo" errorClass="errorMessage" /></div>
-					<div>Anno:
-						<h:inputText id="anno" value="#{quadroTemp.anno}" />
-						<h:message for="anno" errorClass="errorMessage" /></div>
-					<div>Tecnica:
-						<h:inputText id="tecnica" value="#{quadroTemp.tecnica}" />
-						<h:message for="tecnica" errorClass="errorMessage" /></div>
-					<div>Dimensioni:
-						<h:inputText id="dimensioni" value="#{quadroTemp.dimensioni}" />
-						<h:message for="dimensioni" errorClass="errorMessage" /></div>
-					<div>Autore:
-						<h:selectOneMenu id="idAutore" value="#{quadroController.idAutore}" required="true" >
-						   	<f:selectItem itemValue="#{quadroTemp.autore.id}" itemLabel="Autore attuale" />
-						   	<f:selectItems var="autore" value="#{autoreController.listaAutori()}"
-						   		itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}" />
-						</h:selectOneMenu>
-						<h:message for="idAutore" errorClass="errorMessage" /></div>
-					<div>
-						<h:commandButton styleClass="btn btn-custom-brown" value="Modifica" 
-							action="#{quadroController.modificaQuadro(quadroTemp)}" /></div>
+			<div class="col-sm-4">
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Titolo*</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="titolo"
+								value="#{quadroTemp.titolo}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="titolo" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Anno</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="anno"
+								value="#{quadroTemp.anno}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="anno" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Dimensioni</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="dimensioni"
+								value="#{quadroTemp.dimensioni}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dimensioni" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Tecnica</label>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="tecnica"
+								value="#{quadroTemp.tecnica}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="tecnica" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">Autore*</label>
+						<div class="col-sm-8">
+							<h:selectOneMenu id="idAutore" styleClass="form-control"
+								value="#{quadroController.idAutore}" required="true">
+								<f:selectItem itemValue="quadroTemp.autore.id" itemLabel="Autore attuale" />
+								<f:selectItems var="autore"
+									value="#{autoreController.listaAutori()}"
+									itemValue="#{autore.id}"
+									itemLabel="#{autore.nome} #{autore.cognome}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="idAutore" errorClass="errorMessage" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<o:inputFile value="#{quadroController.imgFile}" accept="image/*" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<h:commandButton styleClass="btn btn-custom-brown" value="Submit"
+							action="#{quadroController.modificaQuadro(quadroTemp)}" />
+					</div>
+				</div>
 				</div>
 				<div class="col-sm-8">
-					<div>Immagine:
-						<o:graphicImage value="#{quadroTemp.imgFile}" dataURI="true" />
-						<o:inputFile value="#{quadroController.imgFile}" accept="image/*"/>
-					</div>
+				<o:graphicImage value="#{quadroTemp.imgFile}" dataURI="true" />
 				</div>
 			</h:form>
 		</div>

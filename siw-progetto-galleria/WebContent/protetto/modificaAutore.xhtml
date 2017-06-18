@@ -18,38 +18,89 @@
 	<meta name="theme-color" content="#ffffff" />
 </head>
 <body>
-	<f:view>
-	<ui:include src="/resources/html/navBar.xhtml" />	
-	<div class="container">
-		
-		
+<f:view>
+		<ui:include src="/resources/html/navBar.xhtml" />
+		<div class="container">
 			<h:form>
-				<div>Nome:
-					<h:inputText id="nome" value="#{autoreTemp.nome}" required="true" />
-					<h:message for="nome" errorClass="errorMessage" />
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Nome*</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="nome"
+								value="#{autoreTemp.nome}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="nome" errorClass="errorMessage" />
+						</div>
+					</div>
 				</div>
-				<div>Cognome:
-					<h:inputText id="cognome" value="#{autoreTemp.cognome}" required="true" />
-					<h:message for="cognome" errorClass="errorMessage" />
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Cognome*</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="cognome"
+								value="#{autoreTemp.cognome}" required="true" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="cognome" errorClass="errorMessage" />
+						</div>
+					</div>
 				</div>
-				<div>Nazionalita:
-					<h:inputText id="nazionalita" value="#{autoreTemp.nazionalita}" required="true" />
-					<h:message for="nazionalita" errorClass="errorMessage" />
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Nazionalita'</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText styleClass="form-control" id="nazionalita"
+								value="#{autoreTemp.nazionalita}" />
+						</div>
+						<div class="col-sm-2">
+							<h:message for="nazionalita" errorClass="errorMessage" />
+						</div>
+					</div>
 				</div>
-				<div>Data di nascita:
-					<h:inputText a:placeholder="31-12-2000" id="dataNascita" value="#{autoreTemp.dataNascita}" required="true">
-						<f:convertDateTime pattern="dd-MM-yyyy" />
-					</h:inputText>
-					<h:message for="dataNascita" errorClass="errorMessage" />
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Data di Nascita</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText a:placeholder="31-12-2000" styleClass="form-control" id="dataNascita"
+								value="#{autoreTemp.dataNascita}">
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+							</h:inputText>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dataNascita" errorClass="errorMessage" />
+						</div>
+					</div>
 				</div>
-				<div>Data di morte:
-					<h:inputText a:placeholder="31-12-2000" id="dataMorte"	value="#{autoreTemp.dataMorte}" required="true">
-						<f:convertDateTime pattern="dd-MM-yyyy" />
-					</h:inputText>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<div class="col-sm-2">
+							<label class="control-label">Data di Morte</label>
+						</div>
+						<div class="col-sm-8">
+							<h:inputText a:placeholder="31-12-2000" styleClass="form-control" id="dataMorte"
+								value="#{autoreTemp.dataMorte}">
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+							</h:inputText>
+						</div>
+						<div class="col-sm-2">
+							<h:message for="dataMorte" errorClass="errorMessage" />
+						</div>
+					</div>
 				</div>
-				<div>
-					<h:commandButton styleClass="btn btn-custom-brown" value="Modifica"
-						action="#{autoreController.modificaAutore(autoreTemp)}" />
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<h:commandButton value="Submit" styleClass="btn btn-custom-brown"
+							action="#{autoreController.modificaAutore(autoreTemp)}" />
+					</div>
 				</div>
 			</h:form>
 		</div>
