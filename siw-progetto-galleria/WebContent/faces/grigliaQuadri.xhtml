@@ -29,8 +29,12 @@
 		<div class="col-sm-12">
 			<ui:repeat var="quadro" value="#{queryController.listaQuadriQuery()}">
 			<div class="col-sm-4">
-							<h:form><o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true"/><h:commandLink 
-		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}" /></h:form>
+							<div>#{quadro.titolo}</div>
+							<h:form><h:commandLink 
+		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}">
+		   							<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true"/>
+		   							</h:commandLink>
+		   							</h:form>
 						</div>	
 			</ui:repeat>
 		</div>

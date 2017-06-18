@@ -28,12 +28,12 @@
 		<div class="container">	
 		<div class="col-sm-8">
 			<h:form>
-				Ricerca per Autore: <h:inputText class="form-control" id="autoreCercato" value="#{queryController.autoreCercato}" required="true"/>
+				Ricerca per Autore: <h:inputText class="form-control" style="background-color:transparent" id="autoreCercato" value="#{queryController.autoreCercato}" required="true"/>
 				<h:commandButton class="btn btn-lg btn-default"  value="Cerca" action="#{queryController.listaQuadriQuery()}" />
 			</h:form>
 			<BR />
 			<h:form>
-				Ricerca Quadro: <h:inputText class="form-control" id="quadroCercato" value="#{queryController.quadroCercato}" required="true"/>
+				Ricerca Quadro: <h:inputText class="form-control" style="background-color:transparent" id="quadroCercato" value="#{queryController.quadroCercato}" required="true"/>
 				<h:commandButton class="btn btn-lg btn-default" value="Cerca" action="#{queryController.listaQuadriQuery()}" />
 			</h:form>
 
@@ -74,7 +74,11 @@
 						
 					
 						<div class="col-sm-6">
+						<h:form><h:commandLink 
+		   							action="#{quadroController.visualizzaQuadroCorrente(quadro.id)}">
 							<o:graphicImage class="img" value="#{quadro.imgFile}" dataURI="true"/>
+							</h:commandLink>
+		   							</h:form>
 						</div>					
 					
 					</div>

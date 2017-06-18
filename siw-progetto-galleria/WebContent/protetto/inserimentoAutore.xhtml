@@ -23,24 +23,24 @@
 			<h:form>
 				<div class="form-group col-sm-12">
 				<label class="col-sm-2 control-label">Nome:</label>
-				<div class="col-sm-8"><h:inputText class="form-control" id="nome" value="#{autoreController.nome}" required="true"/></div>
+				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="nome" value="#{autoreController.nome}" required="true"/></div>
 					<div class="col-sm-2"><h:message for="nome" errorClass="errorMessage" /></div></div>
 				<div class="form-group col-sm-12">
 				<label class="col-sm-2 control-label">Cognome:</label>
-				 <div class="col-sm-8"><h:inputText class="form-control" id="cognome" value="#{autoreController.cognome}" required="true" /></div>
+				 <div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="cognome" value="#{autoreController.cognome}" required="true" /></div>
 					<div class="col-sm-2"><h:message for="cognome" errorClass="errorMessage" /></div></div>
 				<div class="form-group col-sm-12">
 				<label class="col-sm-2 control-label">Nazionalita:</label>
-				 <div class="col-sm-8"><h:inputText class="form-control" id="nazionalita" value="#{autoreController.nazionalita}" required="true" /></div>
+				 <div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="nazionalita" value="#{autoreController.nazionalita}" required="true" /></div>
 					<div class="col-sm-2"><h:message for="nazionalita" errorClass="errorMessage" /></div></div>
 				<div class="form-group col-sm-12">
 				<label class="col-sm-2 control-label">Data di nascita: </label>
-				<div class="col-sm-8"><h:inputText class="form-control" id="dataNascita" value="#{autoreController.dataNascita}" required="true" >
+				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="dataNascita" value="#{autoreController.dataNascita}" required="true" >
 					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
 					<div class="col-sm-2"><h:message for="dataNascita" errorClass="errorMessage" /></div></div>
 				<div class="form-group col-sm-12">
 				<label class="col-sm-2 control-label">Data di morte: </label>
-				<div class="col-sm-8"><h:inputText class="form-control" id="dataMorte" value="#{autoreController.dataMorte}" required="true" >
+				<div class="col-sm-8"><h:inputText class="form-control" style="background-color:transparent" id="dataMorte" value="#{autoreController.dataMorte}" required="true" >
 					<f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></div>
 					<div class="col-sm-2"><h:message for="dataMorte" errorClass="errorMessage" /></div></div>
 				<div class="form-group col-sm-12"><h:commandButton value="Submit" class="btn btn-primary" action="#{autoreController.inserisciAutore}" /></div>
