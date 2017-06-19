@@ -18,23 +18,34 @@
 	<style>
 	.p1{font-size:40px}
 	.p2{dont-size:20px}
+	.tit{font-size:100px; font-weight:bold}
+	.btn-custom-brown{margin-right:5px;}
 	</style>
 </h:head>
 <h:body>
 	<f:view>	
 	<ui:include src="/resources/html/navBar.xhtml" />
-	<div class="container">
-			<p class="p1"> CREATORI: </p>
-			<BR />
-			<p class="p2"> Alexander Pavel 
-			<BR />
-			ale.pavel@stud.uniroma3.it
-			<BR />
-			<BR />
-			Luca Pasquini
-			<BR />
-			luc.pasquini@stud.uniroma3.it
-			</p>
+	<div class="container" style="width:30%;padding:20px">
+		<div class="row">
+			<div class="col-sm-offset-1">
+				<p class="p1"> Contatti </p>
+				<BR />
+				<p class="p2">
+					<span class="glyphicon glyphicon-user btn btn-xs btn-custom-brown"></span>Alexandru Pavel
+					<br />
+					<a href="mailto:alexandru.pavel.94@gmail.com?Subject=Ciao%20Mondo" target="_top">
+						<span class="glyphicon glyphicon-envelope btn btn-xs btn-custom-brown"></span>alexandru.pavel.94@gmail.com
+					</a>
+					<BR />
+					<BR />
+					<span class="glyphicon glyphicon-user btn btn-xs btn-custom-brown"></span>Luca Pasquini
+					<BR />
+					<a href="mailto:luc.pasquini@stud.uniroma3.it?Subject=Ciao%20Mondo" target="_top">
+						<span class="glyphicon glyphicon-envelope btn btn-xs btn-custom-brown"></span>luc.pasquini@stud.uniroma3.it
+					</a>
+				</p>
+			</div>
+		</div>
 	</div>
 	</f:view>
 </h:body>
