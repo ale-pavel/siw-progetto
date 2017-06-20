@@ -20,12 +20,12 @@ public class QueryController {
 
 	public List<Quadro> listaQuadriQuery() {
 		List<Quadro> result;
-		if(quadroCercato==null && autoreCercato==null) {
-			result = quadroService.listaQuadri();
-		} else if (quadroCercato!=null) {
+		if (quadroCercato!=null && autoreCercato==null) {
 			result = quadroService.queryQuadriNome(quadroCercato);
+		} else if (autoreCercato!=null && quadroCercato==null) {
+			result = quadroService.queryQuadriAutore(autoreCercato);
 		} else
-			result = quadroService.queryQuadriAutore(autoreCercato); 
+			result = quadroService.listaQuadri();
 		return result;
 	}
 

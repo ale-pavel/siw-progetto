@@ -3,54 +3,68 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputScript name="js/jquery.min.js" />
 	<h:outputScript name="js/bootstrap.min.js" />
 	<title>Informazioni Quadro</title>
-	<link rel="apple-touch-icon" sizes="144x144" href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png"/>
-	<link rel="icon" type="image/png" sizes="32x32" href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png"/>
-	<link rel="icon" type="image/png" sizes="16x16" href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png"/>
-	<link rel="manifest" href="/siw-progetto-galleria/resources/favicons/manifest.json"/>
-	<link rel="mask-icon" href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg" color="#5bbad5"/>
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="/siw-progetto-galleria/resources/favicons/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="/siw-progetto-galleria/resources/favicons/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="/siw-progetto-galleria/resources/favicons/favicon-16x16.png" />
+	<link rel="manifest"
+		href="/siw-progetto-galleria/resources/favicons/manifest.json" />
+	<link rel="mask-icon"
+		href="/siw-progetto-galleria/resources/favicons/safari-pinned-tab.svg"
+		color="#5bbad5" />
 	<meta name="theme-color" content="#ffffff" />
-		<style>
-		.img{height:10%;width:80%}
-	</style>
+<style>
+	.img {
+		height: 10%;
+		width: 80%
+	}
+</style>
 </h:head>
 <h:body>
-	<f:view>	
+	<f:view>
 		<ui:include src="/resources/html/navBar.xhtml" />
 		<div class="container">
-		<div class="col-sm-12">
-					
-					<div class="col-sm-6">
-					
-						<div class="table-responsive">
+			<div class="col-sm-12">
+				<div class="col-sm-6">
+					<div class="table-responsive">
 						<table class="table">
-							<tr><td>
-		   						Titolo: #{quadroController.quadroCorrente.titolo}
-							</td></tr>
-							<tr><td>Anno: #{quadroController.quadroCorrente.anno}</td></tr>
-							<tr><td>Tecnica: #{quadroController.quadroCorrente.tecnica}</td></tr>
-							<tr><td>Dimensioni: #{quadroController.quadroCorrente.dimensioni}</td></tr>
 							<tr>
-							<td>
-								Autore:#{quadroController.quadroCorrente.autore.nome} #{quadroController.quadroCorrente.autore.cognome}"		   				
-			   				</td></tr>
-			   				<tr><td></td></tr>
+								<td>Titolo: #{quadroController.quadroCorrente.titolo}</td>
+							</tr>
+							<tr>
+								<td>Anno: #{quadroController.quadroCorrente.anno}</td>
+							</tr>
+							<tr>
+								<td>Tecnica: #{quadroController.quadroCorrente.tecnica}</td>
+							</tr>
+							<tr>
+								<td>Dimensioni:
+									#{quadroController.quadroCorrente.dimensioni}</td>
+							</tr>
+							<tr>
+								<td>Autore:#{quadroController.quadroCorrente.autore.nome}
+									#{quadroController.quadroCorrente.autore.cognome}</td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
 						</table>
-						</div>
-						</div>
-						
-					
-						<div class="col-sm-6">
-							<o:graphicImage class="img" value="#{quadroController.quadroCorrente.imgFile}" dataURI="true"/>
-						</div>					
-					
 					</div>
+				</div>
+				<div class="col-sm-6">
+					<o:graphicImage class="img"
+						value="#{quadroController.quadroCorrente.imgFile}" dataURI="true" />
+				</div>
+			</div>
 		</div>
 	</f:view>
 </h:body>

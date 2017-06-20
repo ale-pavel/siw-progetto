@@ -61,6 +61,7 @@ public class QuadroController{
 		quadroCorrente = quadroService.ottieniQuadro(id);
 		return "/faces/quadro.jsf";
 	}
+	
 	public String predisponiModificaQuadro(Long id){
 		quadroCorrente = quadroService.ottieniQuadro(id);
 		attributiSessione.put("quadroTemp", quadroCorrente);
